@@ -215,7 +215,7 @@ int main(void)
                 STA350BW_Fs_48000,  //uint32_t                samplingFreq,
                 NULL                //void*                   p
                );
-
+#if 0
   //HAL_Delay(1000);
 
   /* Randam Numbers.
@@ -227,6 +227,8 @@ int main(void)
     Random_Data[Count] = (int16_t)((rand() % 32768) * sin(HAL_GetTick()));
   }
   */
+#endif
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
