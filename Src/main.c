@@ -219,14 +219,14 @@ int main(void)
   //HAL_Delay(1000);
 
   /* Randam Numbers.
-  */
+
   srand(HAL_GetTick());
 
   for(Count = 0; Count < Audio_Buffer_In_Size; Count ++)
   {
     Random_Data[Count] = (int16_t)((rand() % 32768) * sin(HAL_GetTick()));
   }
-
+  */
   /* USER CODE END 2 */
 
   /* Infinite loop */
