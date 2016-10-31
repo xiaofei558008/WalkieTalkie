@@ -1,0 +1,1682 @@
+###############################################################################
+#
+# IAR ELF Linker V7.70.1.11437/W32 for ARM                28/Oct/2016  17:48:11
+# Copyright 2007-2016 IAR Systems AB.
+#
+#    Output file  =  
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Exe\Walkie_Talkie.out
+#    Map file     =  
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\List\Walkie_Talkie.map
+#    Command line =  
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\A2NLSF.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\ana_filt_bank_1.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\analysis.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\apply_sine_window_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\arm_celt_map.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\armcpu.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\Audio.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\autocorr_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\bands.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\biquad_alt.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\burg_modified_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\bwexpander.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\bwexpander_32.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\celt.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\celt_decoder.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\celt_encoder.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\celt_lpc.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\check_control_input.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\CNG.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\code_signs.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\control_audio_bandwidth.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\control_codec.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\control_SNR.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\corrMatrix_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\cwrs.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\debug.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\dec_API.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\decode_core.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\decode_frame.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\decode_indices.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\decode_parameters.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\decode_pitch.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\decode_pulses.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\decoder_set_fs.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\enc_API.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\encode_frame_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\encode_indices.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\encode_pulses.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\entcode.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\entdec.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\entenc.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\find_LPC_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\find_LTP_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\find_pitch_lags_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\find_pred_coefs_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\gain_quant.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\HP_variable_cutoff.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\init_decoder.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\init_encoder.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\inner_prod_aligned.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\interpolate.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\k2a_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\k2a_Q16_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\kiss_fft.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\laplace.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\lin2log.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\log2lin.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\LP_variable_cutoff.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\LPC_analysis_filter.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\LPC_inv_pred_gain.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\LTP_analysis_filter_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\LTP_scale_ctrl_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\main.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\mathops.o
+#        "D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\matrix keyboard.o"
+#        "D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\matrix
+#        keyboard_CallBack.o"
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\mdct.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\mlp.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\mlp_data.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\modes.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\NLSF2A.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\NLSF_decode.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\NLSF_del_dec_quant.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\NLSF_encode.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\NLSF_stabilize.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\NLSF_unpack.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\NLSF_VQ.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\NLSF_VQ_weights_laroia.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\noise_shape_analysis_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\NSQ.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\NSQ_del_dec.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\opus.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\opus_decoder.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\opus_encoder.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\opus_multistream.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\opus_multistream_decoder.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\opus_multistream_encoder.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\pitch.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\pitch_analysis_core_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\pitch_est_tables.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\PLC.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\prefilter_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\process_gains_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\process_NLSFs.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\quant_bands.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\quant_LTP_gains.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\rate.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\regularize_correlations_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\repacketizer.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\resampler.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\resampler_down2.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\resampler_down2_3.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\resampler_private_AR2.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\resampler_private_down_FIR.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\resampler_private_IIR_FIR.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\resampler_private_up2_HQ.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\resampler_rom.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\residual_energy16_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\residual_energy_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\schur64_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\schur_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\shell_coder.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\sigm_Q15.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\solve_LS_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\sort.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT1.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Aes.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Calibration.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Commands.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Csma.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_DirectRF.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_General.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Gpio.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Irq.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_LinearFifo.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Management.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_PktBasic.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_PktCommon.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_PktMbus.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_PktStack.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Qi.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Radio.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Timer.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\SPIRIT_Types.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\sta350bw.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\startup_stm32l476xx.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stereo_decode_pred.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stereo_encode_pred.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stereo_find_predictor.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stereo_LR_to_MS.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stereo_MS_to_LR.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stereo_quant_pred.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_cortex.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_dfsdm.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_dma.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_flash.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_flash_ex.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_flash_ramfunc.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_gpio.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_i2c.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_i2c_ex.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_msp.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_pwr.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_pwr_ex.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_rcc.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_rcc_ex.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_sai.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_spi.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_spi_ex.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_tim.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_hal_tim_ex.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\stm32l4xx_it.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\sum_sqr_shift.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\system_stm32l4xx.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\table_LSF_cos.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\tables_gain.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\tables_LTP.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\tables_NLSF_CB_NB_MB.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\tables_NLSF_CB_WB.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\tables_other.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\tables_pitch_lag.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\tables_pulses_per_block.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\test.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\VAD.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\vector_ops_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\vq.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\VQ_WMat_EC.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\warped_autocorrelation_FIX.o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj\XiFi.o --redirect
+#        _Printf=_PrintfFull --redirect _Scanf=_ScanfFull -o
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Exe\Walkie_Talkie.out
+#        --map
+#        D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\List\Walkie_Talkie.map
+#        --config D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie.icf
+#        --semihosting --entry __iar_program_start --inline "D:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench
+#        7.5\arm\CMSIS\Lib\IAR\iar_cortexM4lf_math.a"
+#        --merge_duplicate_sections --vfe
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__Heap_Handler  = DLMalloc
+__SystemLibrary = DLib
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x08000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x00000000] |
+                [from 0x08000000 to 0x080fffff] { ro };
+"P3":  place in [from 0x20000000 to 0x20017fff] { rw, block CSTACK, block HEAP };
+initialize by copy { rw };
+
+  Section             Kind        Address     Size  Object
+  -------             ----        -------     ----  ------
+"A0":                                        0x188
+  .intvec             ro code  0x08000000    0x188  startup_stm32l476xx.o [1]
+                             - 0x08000188    0x188
+
+"P1":                                      0x30894
+  .text               ro code  0x08000188   0x3f70  celt_encoder.o [1]
+  .text               ro code  0x080040f8     0x88  modes.o [1]
+  .text               ro code  0x08004180      0x6  ABImemclr.o [5]
+  .text               ro code  0x08004188    0x548  celt.o [1]
+  .text               ro code  0x080046d0     0x16  vla_alloc.o [3]
+  .text               ro code  0x080046e8     0xfc  entcode.o [1]
+  .text               ro code  0x080047e4    0x2f4  mathops.o [1]
+  .text               ro code  0x08004ad8    0x3cc  mdct.o [1]
+  .text               ro code  0x08004ea4     0x76  ABImemcpy_unaligned.o [5]
+  .text               ro code  0x08004f1c   0x24a4  bands.o [1]
+  .text               ro code  0x080073c0    0x6aa  entenc.o [1]
+  .text               ro code  0x08007a6c      0x6  ABImemclr4.o [5]
+  .text               ro code  0x08007a74   0x12f8  pitch.o [1]
+  .text               ro code  0x08008d6c     0x78  ABImemmove_unaligned.o [5]
+  .text               ro code  0x08008de4     0x30  I32ToDbl.o [4]
+  .text               ro code  0x08008e14    0x1a2  DblMul.o [4]
+  .text               ro code  0x08008fb8     0x2e  DblCmpLe.o [4]
+  .text               ro code  0x08008fe8    0x968  quant_bands.o [1]
+  .text               ro code  0x08009950    0xaf4  rate.o [1]
+  .text               ro code  0x0800a444     0x66  ABImemset.o [5]
+  .text               ro code  0x0800a4ac   0x14f4  dlmalloc.o [3]
+  .text               ro code  0x0800b9a0      0x6  abort.o [3]
+  .text               ro code  0x0800b9a8    0xbc0  kiss_fft.o [1]
+  .text               ro code  0x0800c568    0xd00  vq.o [1]
+  .text               ro code  0x0800d268    0x1e2  entdec.o [1]
+  .text               ro code  0x0800d44c     0x32  ABImemset48.o [5]
+  .text               ro code  0x0800d480    0x8c6  celt_lpc.o [1]
+  .text               ro code  0x0800dd46     0x7e  laplace.o [1]
+  .text               ro code  0x0800ddc4     0x2c  xgetmemchunk.o [3]
+  .text               ro code  0x0800ddf0     0x14  exit.o [6]
+  .text               ro code  0x0800de04    0x258  cwrs.o [1]
+  .text               ro code  0x0800e05c   0x2f6c  opus_encoder.o [1]
+  .text               ro code  0x08010fc8    0xea8  enc_API.o [1]
+  .text               ro code  0x08011e70     0x48  lin2log.o [1]
+  .text               ro code  0x08011eb8   0x1c7c  analysis.o [1]
+  .text               ro code  0x08013b34     0xf6  biquad_alt.o [1]
+  .text               ro code  0x08013c2c     0x4e  FltToDbl.o [4]
+  .text               ro code  0x08013c7c    0x100  sqrt.o [4]
+  .text               ro code  0x08013d7c     0x90  DblToFlt.o [4]
+  .text               ro code  0x08013e0c     0xe8  DblAdd.o [4]
+  .text               ro code  0x08013ef4     0x6e  floor.o [4]
+  .text               ro code  0x08013f64     0x58  DblToI32.o [4]
+  .text               ro code  0x08013fbc    0x43a  repacketizer.o [1]
+  .text               ro code  0x080143f6     0x50  log2lin.o [1]
+  .text               ro code  0x08014446     0x40  init_encoder.o [1]
+  .text               ro code  0x08014486     0xee  check_control_input.o [1]
+  .text               ro code  0x08014574    0x500  control_codec.o [1]
+  .text               ro code  0x08014a74    0x3c0  resampler.o [1]
+  .text               ro code  0x08014e34     0x7c  stereo_encode_pred.o [1]
+  .text               ro code  0x08014eb0    0x27c  encode_indices.o [1]
+  .text               ro code  0x0801512c    0x44c  encode_pulses.o [1]
+  .text               ro code  0x08015578    0x108  HP_variable_cutoff.o [1]
+  .text               ro code  0x08015680    0x6dc  stereo_LR_to_MS.o [1]
+  .text               ro code  0x08015d5c    0x79e  encode_frame_FIX.o [1]
+  .text               ro code  0x080164fc     0xcc  control_SNR.o [1]
+  .text               ro code  0x080165c8    0x376  xlog.o [4]
+  .text               ro code  0x08016940    0x598  mlp.o [1]
+  .text               ro code  0x08016ed8    0x8d0  pow.o [4]
+  .text               ro code  0x080177a8      0xc  iarEdom.o [5]
+  .text               ro code  0x080177b4    0x180  DblSub.o [4]
+  .text               ro code  0x08017934    0x3d0  opus.o [1]
+  .text               ro code  0x08017d04     0x2e  opus_decoder.o [1]
+  .text               ro code  0x08017d34    0x6c0  VAD.o [1]
+  .text               ro code  0x080183f4     0xf4  control_audio_bandwidth.o [1]
+  .text               ro code  0x080184e8    0x12e  resampler_private_up2_HQ.o [1]
+  .text               ro code  0x08018618    0x14e  resampler_private_IIR_FIR.o [1]
+  .text               ro code  0x08018768    0x71a  resampler_private_down_FIR.o [1]
+  .text               ro code  0x08018e84     0x74  NLSF_unpack.o [1]
+  .text               ro code  0x08018ef8    0x1e0  shell_coder.o [1]
+  .text               ro code  0x080190d8     0x7c  code_signs.o [1]
+  .text               ro code  0x08019154    0x250  stereo_find_predictor.o [1]
+  .text               ro code  0x080193a4     0xb8  stereo_quant_pred.o [1]
+  .text               ro code  0x0801945c    0x1b6  LP_variable_cutoff.o [1]
+  .text               ro code  0x08019614    0x2b0  find_pitch_lags_FIX.o [1]
+  .text               ro code  0x080198c4    0xdcc  noise_shape_analysis_FIX.o [1]
+  .text               ro code  0x0801a690    0x340  find_pred_coefs_FIX.o [1]
+  .text               ro code  0x0801a9d0    0x2f0  process_gains_FIX.o [1]
+  .text               ro code  0x0801acc0    0x40c  prefilter_FIX.o [1]
+  .text               ro code  0x0801b0cc    0x1e6  gain_quant.o [1]
+  .text               ro code  0x0801b2b4   0x163a  NSQ_del_dec.o [1]
+  .text               ro code  0x0801c8f0    0xcf0  NSQ.o [1]
+  .text               ro code  0x0801d5e0     0x44  xdnorm.o [4]
+  .text               ro code  0x0801d624      0xc  errno.o [3]
+  .text               ro code  0x0801d630    0x256  DblDiv.o [4]
+  .text               ro code  0x0801d886     0x7a  xdint.o [4]
+  .text               ro code  0x0801d900     0x20  DblCmpEq.o [4]
+  .text               ro code  0x0801d920     0x2e  DblCmpGe.o [4]
+  .text               ro code  0x0801d950    0x2c6  xexp.o [4]
+  .text               ro code  0x0801dc18     0xbc  ana_filt_bank_1.o [1]
+  .text               ro code  0x0801dcd4     0x9c  sigm_Q15.o [1]
+  .text               ro code  0x0801dd70     0x48  resampler_private_AR2.o [1]
+  .text               ro code  0x0801ddb8     0x7c  sum_sqr_shift.o [1]
+  .text               ro code  0x0801de34     0x72  inner_prod_aligned.o [1]
+  .text               ro code  0x0801dea8    0x128  apply_sine_window_FIX.o [1]
+  .text               ro code  0x0801dfd0     0x2c  autocorr_FIX.o [1]
+  .text               ro code  0x0801dffc    0x1dc  schur_FIX.o [1]
+  .text               ro code  0x0801e1d8    0x104  k2a_FIX.o [1]
+  .text               ro code  0x0801e2dc     0x8c  bwexpander.o [1]
+  .text               ro code  0x0801e368     0xd8  LPC_analysis_filter.o [1]
+  .text               ro code  0x0801e440   0x10a4  pitch_analysis_core_FIX.o [1]
+  .text               ro code  0x0801f4e4     0x6a  bwexpander_32.o [1]
+  .text               ro code  0x0801f550    0x1fa  warped_autocorrelation_FIX.o [1]
+  .text               ro code  0x0801f74c    0x21c  schur64_FIX.o [1]
+  .text               ro code  0x0801f968    0x138  k2a_Q16_FIX.o [1]
+  .text               ro code  0x0801faa0    0x27e  LPC_inv_pred_gain.o [1]
+  .text               ro code  0x0801fd20    0x7e0  find_LTP_FIX.o [1]
+  .text               ro code  0x08020500    0x1b0  quant_LTP_gains.o [1]
+  .text               ro code  0x080206b0     0x50  LTP_scale_ctrl_FIX.o [1]
+  .text               ro code  0x08020700    0x108  LTP_analysis_filter_FIX.o [1]
+  .text               ro code  0x08020808    0x1d4  vector_ops_FIX.o [1]
+  .text               ro code  0x080209dc    0x178  find_LPC_FIX.o [1]
+  .text               ro code  0x08020b54    0x15c  process_NLSFs.o [1]
+  .text               ro code  0x08020cb0     0xee  residual_energy_FIX.o [1]
+  .text               ro code  0x08020d9e      0x2  stm32l4xx_hal_dfsdm.o [1]
+  .text               ro code  0x08020da0     0x40  xdtest.o [4]
+  .text               ro code  0x08020de0    0x114  xdscale.o [4]
+  .text               ro code  0x08020ef4     0x94  resampler_down2.o [1]
+  .text               ro code  0x08020f88    0x1b0  resampler_down2_3.o [1]
+  .text               ro code  0x08021138    0x2b0  sort.o [1]
+  .text               ro code  0x080213e8     0x22  I64Shl.o [5]
+  .text               ro code  0x0802140c     0x22  S64Shr.o [5]
+  .text               ro code  0x08021430    0x5f8  corrMatrix_FIX.o [1]
+  .text               ro code  0x08021a28     0x76  regularize_correlations_FIX.o [1]
+  .text               ro code  0x08021aa0    0x54e  solve_LS_FIX.o [1]
+  .text               ro code  0x08021ff0    0x286  residual_energy16_FIX.o [1]
+  .text               ro code  0x08022276    0x25e  VQ_WMat_EC.o [1]
+  .text               ro code  0x080224d4    0xa84  burg_modified_FIX.o [1]
+  .text               ro code  0x08022f58    0x748  A2NLSF.o [1]
+  .text               ro code  0x080236a0     0x94  interpolate.o [1]
+  .text               ro code  0x08023734    0x544  NLSF2A.o [1]
+  .text               ro code  0x08023c78     0xd2  NLSF_VQ_weights_laroia.o [1]
+  .text               ro code  0x08023d4c    0x31e  NLSF_encode.o [1]
+  .text               ro code  0x0802406c    0x27c  NLSF_stabilize.o [1]
+  .text               ro code  0x080242e8     0x56  NLSF_VQ.o [1]
+  .text               ro code  0x08024340    0x578  NLSF_del_dec_quant.o [1]
+  .text               ro code  0x080248b8    0x182  NLSF_decode.o [1]
+  .rodata             const    0x08024a3c   0x2324  modes.o [1]
+  .rodata             const    0x08026d60   0x141c  cwrs.o [1]
+  .text               ro code  0x0802817c    0xff4  SPIRIT_Radio.o [1]
+  .text               ro code  0x08029170    0x4a0  SPIRIT1.o [1]
+  .text               ro code  0x08029610     0x1c  SPIRIT_Types.o [1]
+  .text               ro code  0x0802962c    0x318  SPIRIT_Management.o [1]
+  .text               ro code  0x08029944    0x122  SPIRIT_Calibration.o [1]
+  .text               ro code  0x08029a68     0x4c  round.o [4]
+  .text               ro code  0x08029ab4     0x1a  stm32l4xx_hal.o [1]
+  .text               ro code  0x08029ad0    0x1e8  stm32l4xx_hal_gpio.o [1]
+  .text               ro code  0x08029cb8     0x2c  SPIRIT_Gpio.o [1]
+  .text               ro code  0x08029ce4    0x23c  SPIRIT_PktBasic.o [1]
+  .text               ro code  0x08029f20     0xac  SPIRIT_Qi.o [1]
+  .text               ro code  0x08029fcc     0xb0  SPIRIT_Irq.o [1]
+  .text               ro code  0x0802a07c    0x16c  SPIRIT_Timer.o [1]
+  .text               ro code  0x0802a1e8     0x90  SPIRIT_PktCommon.o [1]
+  .text               ro code  0x0802a278     0x1c  SPIRIT_Commands.o [1]
+  .text               ro code  0x0802a294      0xc  stm32l4xx_hal.o [1]
+  .text               ro code  0x0802a2a0    0xa40  stm32l4xx_hal_rcc_ex.o [1]
+  .text               ro code  0x0802ace0    0x7e0  stm32l4xx_hal_rcc.o [1]
+  .text               ro code  0x0802b4c0     0xa4  stm32l4xx_hal_pwr_ex.o [1]
+  .text               ro code  0x0802b564     0x2c  stm32l4xx_hal.o [1]
+  .text               ro code  0x0802b590     0xd2  stm32l4xx_hal_cortex.o [1]
+  .text               ro code  0x0802b664    0x8f0  stm32l4xx_hal_i2c.o [1]
+  .text               ro code  0x0802bf54    0x3f0  stm32l4xx_hal_msp.o [1]
+  .text               ro code  0x0802c344    0x23c  stm32l4xx_hal_dma.o [1]
+  .text               ro code  0x0802c580    0x686  main.o [1]
+  .text               ro code  0x0802cc08     0x1c  XiFi.o [1]
+  .text               ro code  0x0802cc24     0x1a  stm32l4xx_hal.o [1]
+  .text               ro code  0x0802cc40     0x56  stm32l4xx_hal_i2c_ex.o [1]
+  .text               ro code  0x0802cc98    0x346  stm32l4xx_hal_sai.o [1]
+  .text               ro code  0x0802cfe0     0xac  stm32l4xx_hal_spi.o [1]
+  .text               ro code  0x0802d08c    0x25e  stm32l4xx_hal_tim.o [1]
+  .text               ro code  0x0802d2ec     0x58  stm32l4xx_hal_tim_ex.o [1]
+  .text               ro code  0x0802d344    0x38c  stm32l4xx_hal_dfsdm.o [1]
+  .text               ro code  0x0802d6d0     0x80  test.o [1]
+  .text               ro code  0x0802d750    0x3fc  matrix keyboard.o [1]
+  .text               ro code  0x0802db4c    0x1de  sta350bw.o [1]
+  .text               ro code  0x0802dd2c     0x20  srand.o [3]
+  .text               ro code  0x0802dd4c     0xe0  rand.o [3]
+  .text               ro code  0x0802de2c    0x45a  xsin.o [4]
+  .text               ro code  0x0802e288     0x40  Audio.o [1]
+  .text               ro code  0x0802e2c8     0x28  SPIRIT_LinearFifo.o [1]
+  .text               ro code  0x0802e2f0     0xec  matrix keyboard_CallBack.o [1]
+  .text               ro code  0x0802e3dc    0x168  xquad.o [4]
+  .text               ro code  0x0802e544    0x1a8  fmod.o [4]
+  .rodata             const    0x0802e6ec    0x6b0  mlp_data.o [1]
+  .rodata             const    0x0802ed9c    0x438  tables_NLSF_CB_WB.o [1]
+  .rodata             const    0x0802f1d4    0x424  tables_pulses_per_block.o [1]
+  .rodata             const    0x0802f5f8    0x40c  analysis.o [1]
+  .rodata             const    0x0802fa04    0x300  tables_NLSF_CB_NB_MB.o [1]
+  .rodata             const    0x0802fd04    0x204  entcode.o [1]
+  .rodata             const    0x0802ff08    0x1fc  tables_LTP.o [1]
+  .rodata             const    0x08030104    0x178  tables_other.o [1]
+  .rodata             const    0x0803027c    0x164  resampler_rom.o [1]
+  .rodata             const    0x080303e0    0x104  table_LSF_cos.o [1]
+  .rodata             const    0x080304e4     0xf4  pitch_est_tables.o [1]
+  .text               ro code  0x080305d8     0x8c  system_stm32l4xx.o [1]
+  .rodata             const    0x08030664     0x80  opus_encoder.o [1]
+  .rodata             const    0x080306e4     0x78  tables_pitch_lag.o [1]
+  .text               ro code  0x0803075c     0x54  stm32l4xx_it.o [1]
+  .text               ro code  0x080307b0     0x10  stm32l4xx_hal.o [1]
+  .rodata             const    0x080307c0     0x44  tables_gain.o [1]
+  .text               ro code  0x08030804     0x40  zero_init3.o [5]
+  .text               ro code  0x08030844     0x2c  copy_init3.o [5]
+  .text               ro code  0x08030870     0x28  data_init.o [5]
+  .text               ro code  0x08030898     0x22  fpinit_M.o [4]
+  .iar.init_table     const    0x080308bc     0x24  - Linker created -
+  .rodata             const    0x080308e0     0x20  celt.o [1]
+  .text               ro code  0x08030900     0x1a  cmain.o [5]
+  .text               ro code  0x0803091a      0x4  exit.o [3]
+  .text               ro code  0x08030920      0xa  cexit.o [5]
+  .text               ro code  0x0803092c     0x10  startup_stm32l476xx.o [1]
+  .text               ro code  0x0803093c      0xc  cstartup_M.o [5]
+  .rodata             const    0x08030948      0x8  system_stm32l4xx.o [1]
+  .rodata             const    0x08030950      0x4  celt_encoder.o [1]
+  .text               ro code  0x08030954      0x4  startup_stm32l476xx.o [1]
+  .rodata             const    0x08030958      0x0  zero_init3.o [5]
+  .rodata             const    0x08030958      0x0  copy_init3.o [5]
+  Initializer bytes   const    0x08030958     0xc4  <for P3 s0>
+                             - 0x08030a1c  0x30894
+
+"P3", part 1 of 3:                            0xc4
+  P3 s0                        0x20000000     0xc4  <Init block>
+    __DLIB_PERTHREAD  inited   0x20000000     0x8c  rand.o [3]
+    .data             inited   0x2000008c     0x20  sta350bw.o [1]
+    .data             inited   0x200000ac      0x8  SPIRIT_Management.o [1]
+    .data             inited   0x200000b4      0x8  SPIRIT_Radio.o [1]
+    .data             inited   0x200000bc      0x4  system_stm32l4xx.o [1]
+    __DLIB_PERTHREAD  inited   0x200000c0      0x4  errno.o [3]
+                             - 0x200000c4     0xc4
+
+"P3", part 2 of 3:                          0x26cc
+  .bss                zero     0x200000c4   0x1e00  Audio.o [1]
+  .bss                zero     0x20001ec4    0x2d0  main.o [1]
+  .bss                zero     0x20002194    0x1d8  dlmalloc.o [3]
+  .bss                zero     0x2000236c    0x1a8  XiFi.o [1]
+  .bss                zero     0x20002514     0x70  matrix keyboard.o [1]
+  .bss                zero     0x20002584     0x60  test.o [1]
+  .bss                zero     0x200025e4     0x60  test.o [1]
+  .bss                zero     0x20002644     0x48  main.o [1]
+  .bss                zero     0x2000268c     0x48  main.o [1]
+  .bss                zero     0x200026d4     0x48  main.o [1]
+  .bss                zero     0x2000271c     0x24  stm32l4xx_hal_dfsdm.o [1]
+  .bss                zero     0x20002740     0x20  SPIRIT1.o [1]
+  .bss                zero     0x20002760     0x18  dlmalloc.o [3]
+  .bss                zero     0x20002778      0x8  stm32l4xx_hal_msp.o [1]
+  .bss                zero     0x20002780      0x4  SPIRIT_Types.o [1]
+  .bss                zero     0x20002784      0x4  stm32l4xx_hal.o [1]
+  .bss                zero     0x20002788      0x4  stm32l4xx_hal_msp.o [1]
+  .bss                zero     0x2000278c      0x4  xgetmemchunk.o [3]
+                             - 0x20002790   0x26cc
+
+"P3", part 3 of 3:                         0x15000
+  CSTACK                       0x20002790   0x2000  <Block>
+    CSTACK            uninit   0x20002790   0x2000  <Block tail>
+  HEAP                         0x20004790  0x13000  <Block>
+    HEAP              uninit   0x20004790  0x13000  <Block tail>
+                             - 0x20017790  0x15000
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x26cc:
+          0x200000c4  0x26cc
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0xc4:
+          0x08030958    0xc4
+    1 destination range, total size 0xc4:
+          0x20000000    0xc4
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                         ro code  ro data  rw data
+    ------                         -------  -------  -------
+D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj: [1]
+    A2NLSF.o                         1 864
+    Audio.o                             64             7 680
+    HP_variable_cutoff.o               264
+    LPC_analysis_filter.o              216
+    LPC_inv_pred_gain.o                638
+    LP_variable_cutoff.o               438
+    LTP_analysis_filter_FIX.o          264
+    LTP_scale_ctrl_FIX.o                80
+    NLSF2A.o                         1 348
+    NLSF_VQ.o                           86
+    NLSF_VQ_weights_laroia.o           210
+    NLSF_decode.o                      386
+    NLSF_del_dec_quant.o             1 400
+    NLSF_encode.o                      798
+    NLSF_stabilize.o                   636
+    NLSF_unpack.o                      116
+    NSQ.o                            3 312
+    NSQ_del_dec.o                    5 690
+    SPIRIT1.o                        1 184                32
+    SPIRIT_Calibration.o               290
+    SPIRIT_Commands.o                   28
+    SPIRIT_Gpio.o                       44
+    SPIRIT_Irq.o                       176
+    SPIRIT_LinearFifo.o                 40
+    SPIRIT_Management.o                792        8        8
+    SPIRIT_PktBasic.o                  572
+    SPIRIT_PktCommon.o                 144
+    SPIRIT_Qi.o                        172
+    SPIRIT_Radio.o                   4 084        8        8
+    SPIRIT_Timer.o                     364
+    SPIRIT_Types.o                      28                 4
+    VAD.o                            1 728
+    VQ_WMat_EC.o                       606
+    XiFi.o                              28               424
+    ana_filt_bank_1.o                  188
+    analysis.o                       7 292    1 036
+    apply_sine_window_FIX.o            296
+    autocorr_FIX.o                      44
+    bands.o                          9 380
+    biquad_alt.o                       246
+    burg_modified_FIX.o              2 692
+    bwexpander.o                       140
+    bwexpander_32.o                    106
+    celt.o                           1 352       32
+    celt_encoder.o                  16 240        4
+    celt_lpc.o                       2 246
+    check_control_input.o              238
+    code_signs.o                       124
+    control_SNR.o                      204
+    control_audio_bandwidth.o          244
+    control_codec.o                  1 280
+    corrMatrix_FIX.o                 1 528
+    cwrs.o                             600    5 148
+    enc_API.o                        3 752
+    encode_frame_FIX.o               1 950
+    encode_indices.o                   636
+    encode_pulses.o                  1 100
+    entcode.o                          252      516
+    entdec.o                           482
+    entenc.o                         1 706
+    find_LPC_FIX.o                     376
+    find_LTP_FIX.o                   2 016
+    find_pitch_lags_FIX.o              688
+    find_pred_coefs_FIX.o              832
+    gain_quant.o                       486
+    init_encoder.o                      64
+    inner_prod_aligned.o               114
+    interpolate.o                      148
+    k2a_FIX.o                          260
+    k2a_Q16_FIX.o                      312
+    kiss_fft.o                       3 008
+    laplace.o                          126
+    lin2log.o                           72
+    log2lin.o                           80
+    main.o                           1 670               936
+    mathops.o                          756
+    matrix keyboard.o                1 020               112
+    matrix keyboard_CallBack.o         236
+    mdct.o                             972
+    mlp.o                            1 432
+    mlp_data.o                                1 712
+    modes.o                            136    8 996
+    noise_shape_analysis_FIX.o       3 532
+    opus.o                             976
+    opus_decoder.o                      46
+    opus_encoder.o                  12 140      128
+    pitch.o                          4 856
+    pitch_analysis_core_FIX.o        4 260
+    pitch_est_tables.o                          244
+    prefilter_FIX.o                  1 036
+    process_NLSFs.o                    348
+    process_gains_FIX.o                752
+    quant_LTP_gains.o                  432
+    quant_bands.o                    2 408
+    rate.o                           2 804
+    regularize_correlations_FIX.o      118
+    repacketizer.o                   1 082
+    resampler.o                        960
+    resampler_down2.o                  148
+    resampler_down2_3.o                432
+    resampler_private_AR2.o             72
+    resampler_private_IIR_FIR.o        334
+    resampler_private_down_FIR.o     1 818
+    resampler_private_up2_HQ.o         302
+    resampler_rom.o                             356
+    residual_energy16_FIX.o            646
+    residual_energy_FIX.o              238
+    schur64_FIX.o                      540
+    schur_FIX.o                        476
+    shell_coder.o                      480
+    sigm_Q15.o                         156
+    solve_LS_FIX.o                   1 358
+    sort.o                             688
+    sta350bw.o                         478       32       32
+    startup_stm32l476xx.o              412
+    stereo_LR_to_MS.o                1 756
+    stereo_encode_pred.o               124
+    stereo_find_predictor.o            592
+    stereo_quant_pred.o                184
+    stm32l4xx_hal.o                    124                 4
+    stm32l4xx_hal_cortex.o             210
+    stm32l4xx_hal_dfsdm.o              910                36
+    stm32l4xx_hal_dma.o                572
+    stm32l4xx_hal_gpio.o               488
+    stm32l4xx_hal_i2c.o              2 288
+    stm32l4xx_hal_i2c_ex.o              86
+    stm32l4xx_hal_msp.o              1 008                12
+    stm32l4xx_hal_pwr_ex.o             164
+    stm32l4xx_hal_rcc.o              2 016
+    stm32l4xx_hal_rcc_ex.o           2 624
+    stm32l4xx_hal_sai.o                838
+    stm32l4xx_hal_spi.o                172
+    stm32l4xx_hal_tim.o                606
+    stm32l4xx_hal_tim_ex.o              88
+    stm32l4xx_it.o                      84
+    sum_sqr_shift.o                    124
+    system_stm32l4xx.o                 140       12        4
+    table_LSF_cos.o                             260
+    tables_LTP.o                                508
+    tables_NLSF_CB_NB_MB.o                      768
+    tables_NLSF_CB_WB.o                       1 080
+    tables_gain.o                                68
+    tables_other.o                              376
+    tables_pitch_lag.o                          120
+    tables_pulses_per_block.o                 1 060
+    test.o                             128               192
+    vector_ops_FIX.o                   468
+    vq.o                             3 328
+    warped_autocorrelation_FIX.o       506
+    --------------------------------------------------------
+    Total:                         161 168   22 472    9 484
+
+command line: [2]
+    --------------------------------------------------------
+    Total:
+
+dl7M_tlf.a: [3]
+    abort.o                              6
+    dlmalloc.o                       5 364               496
+    errno.o                             12        4        4
+    exit.o                               4
+    rand.o                             224      140      140
+    srand.o                             32
+    vla_alloc.o                         22
+    xgetmemchunk.o                      44                 4
+    --------------------------------------------------------
+    Total:                           5 708      144      644
+
+m7M_tls.a: [4]
+    DblAdd.o                           232
+    DblCmpEq.o                          32
+    DblCmpGe.o                          46
+    DblCmpLe.o                          46
+    DblDiv.o                           598
+    DblMul.o                           418
+    DblSub.o                           384
+    DblToFlt.o                         144
+    DblToI32.o                          88
+    FltToDbl.o                          78
+    I32ToDbl.o                          48
+    floor.o                            110
+    fmod.o                             424
+    fpinit_M.o                          34
+    pow.o                            2 256
+    round.o                             76
+    sqrt.o                             256
+    xdint.o                            122
+    xdnorm.o                            68
+    xdscale.o                          276
+    xdtest.o                            64
+    xexp.o                             710
+    xlog.o                             886
+    xquad.o                            360
+    xsin.o                           1 114
+    --------------------------------------------------------
+    Total:                           8 870
+
+rt7M_tl.a: [5]
+    ABImemclr.o                          6
+    ABImemclr4.o                         6
+    ABImemcpy_unaligned.o              118
+    ABImemmove_unaligned.o             120
+    ABImemset.o                        102
+    ABImemset48.o                       50
+    I64Shl.o                            34
+    S64Shr.o                            34
+    cexit.o                             10
+    cmain.o                             26
+    copy_init3.o                        44
+    cstartup_M.o                        12
+    data_init.o                         40
+    iarEdom.o                           12
+    zero_init3.o                        64
+    --------------------------------------------------------
+    Total:                             678
+
+shb_l.a: [6]
+    exit.o                              20
+    --------------------------------------------------------
+    Total:                              20
+
+    Gaps                                96        4
+    Linker created                               36   86 016
+------------------------------------------------------------
+    Grand Total:                   176 540   22 656   96 144
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address    Size  Type      Object
+-----                      -------    ----  ----      ------
+.iar.init_table$$Base   0x080308bc           --   Gb  - Linker created -
+.iar.init_table$$Limit  0x080308e0           --   Gb  - Linker created -
+?main                   0x08030901          Code  Gb  cmain.o [5]
+AHBPrescTable           0x08030624    0x10  Data  Gb  system_stm32l4xx.o [1]
+APBPrescTable           0x08030948     0x8  Data  Gb  system_stm32l4xx.o [1]
+Audio                   0x200000c4  0x1e00  Data  Gb  Audio.o [1]
+BusFault_Handler        0x08030763     0x2  Code  Gb  stm32l4xx_it.o [1]
+CELT_PVQ_U_DATA         0x08026d60  0x13e0  Data  Lc  cwrs.o [1]
+CELT_PVQ_U_ROW          0x08028140    0x3c  Data  Lc  cwrs.o [1]
+CSTACK$$Base            0x20002790           --   Gb  - Linker created -
+CSTACK$$Limit           0x20004790           --   Gb  - Linker created -
+Com                     0x2000236c   0x1a8  Data  Gb  XiFi.o [1]
+Com_Init                0x0802cc09    0x1a  Code  Gb  XiFi.o [1]
+DFSDM1_Init             0x2000277c     0x4  Data  Lc  stm32l4xx_hal_msp.o [1]
+DFSDM_DMAError          0x0802d5e5     0xa  Code  Lc  stm32l4xx_hal_dfsdm.o [1]
+DFSDM_DMARegularConvCplt
+                        0x0802d5dd     0x6  Code  Lc  stm32l4xx_hal_dfsdm.o [1]
+DFSDM_DMARegularHalfConvCplt
+                        0x0802d5d5     0x6  Code  Lc  stm32l4xx_hal_dfsdm.o [1]
+DFSDM_GetChannelFromInstance
+                        0x0802d5ef    0x54  Code  Lc  stm32l4xx_hal_dfsdm.o [1]
+DFSDM_RegConvStart      0x0802d675    0x5c  Code  Lc  stm32l4xx_hal_dfsdm.o [1]
+DMA1_Channel4_IRQHandler
+                        0x0803077f     0x6  Code  Gb  stm32l4xx_it.o [1]
+DMA1_Channel5_IRQHandler
+                        0x08030785     0x6  Code  Gb  stm32l4xx_it.o [1]
+DMA2_Channel3_IRQHandler
+                        0x08030797     0x6  Code  Gb  stm32l4xx_it.o [1]
+DebugMon_Handler        0x08030769     0x2  Code  Gb  stm32l4xx_it.o [1]
+Enc                     0x20002190     0x4  Data  Gb  main.o [1]
+Error_Handler           0x0802cc05     0x2  Code  Gb  main.o [1]
+Flag_DFSDM_Int          0x20002188     0x4  Data  Gb  main.o [1]
+HAL_DFSDM_ChannelInit   0x0802d345    0xe4  Code  Gb  stm32l4xx_hal_dfsdm.o [1]
+HAL_DFSDM_ChannelMspInit
+                        0x0802c0e5    0x68  Code  Gb  stm32l4xx_hal_msp.o [1]
+HAL_DFSDM_FilterConfigRegChannel
+                        0x0802d50b    0x40  Code  Gb  stm32l4xx_hal_dfsdm.o [1]
+HAL_DFSDM_FilterErrorCallback
+                        0x08020d9f     0x2  Code  Wk  stm32l4xx_hal_dfsdm.o [1]
+HAL_DFSDM_FilterInit    0x0802d429    0xe2  Code  Gb  stm32l4xx_hal_dfsdm.o [1]
+HAL_DFSDM_FilterMspInit
+                        0x0802bfe1   0x104  Code  Gb  stm32l4xx_hal_msp.o [1]
+HAL_DFSDM_FilterRegConvCpltCallback
+                        0x0802e2a3    0x1a  Code  Gb  Audio.o [1]
+HAL_DFSDM_FilterRegConvHalfCpltCallback
+                        0x0802e289    0x1a  Code  Gb  Audio.o [1]
+HAL_DFSDM_FilterRegularStart_DMA
+                        0x0802d555    0x7e  Code  Gb  stm32l4xx_hal_dfsdm.o [1]
+HAL_DMA_IRQHandler      0x0802c4c3    0xbe  Code  Gb  stm32l4xx_hal_dma.o [1]
+HAL_DMA_Init            0x0802c345    0xda  Code  Gb  stm32l4xx_hal_dma.o [1]
+HAL_DMA_Start_IT        0x0802c435    0x8e  Code  Gb  stm32l4xx_hal_dma.o [1]
+HAL_Delay               0x08029ab5    0x1a  Code  Wk  stm32l4xx_hal.o [1]
+HAL_GPIO_Init           0x08029ad1   0x1a4  Code  Gb  stm32l4xx_hal_gpio.o [1]
+HAL_GPIO_ReadPin        0x08029c75     0xe  Code  Gb  stm32l4xx_hal_gpio.o [1]
+HAL_GPIO_TogglePin      0x08029c8d     0x8  Code  Gb  stm32l4xx_hal_gpio.o [1]
+HAL_GPIO_WritePin       0x08029c83     0xa  Code  Gb  stm32l4xx_hal_gpio.o [1]
+HAL_GetTick             0x0802a295     0xc  Code  Wk  stm32l4xx_hal.o [1]
+HAL_I2CEx_ConfigAnalogFilter
+                        0x0802cc41    0x56  Code  Gb  stm32l4xx_hal_i2c_ex.o [1]
+HAL_I2C_Init            0x0802b665    0xb0  Code  Gb  stm32l4xx_hal_i2c.o [1]
+HAL_I2C_Mem_Read        0x0802baf5   0x3c4  Code  Gb  stm32l4xx_hal_i2c.o [1]
+HAL_I2C_Mem_Write       0x0802b715   0x3de  Code  Gb  stm32l4xx_hal_i2c.o [1]
+HAL_I2C_MspInit         0x0802c14d    0x44  Code  Gb  stm32l4xx_hal_msp.o [1]
+HAL_IncTick             0x080307b1    0x10  Code  Wk  stm32l4xx_hal.o [1]
+HAL_Init                0x0802cc25    0x1a  Code  Gb  stm32l4xx_hal.o [1]
+HAL_InitTick            0x0802b565    0x2c  Code  Wk  stm32l4xx_hal.o [1]
+HAL_MspInit             0x0802bf55    0x8c  Code  Gb  stm32l4xx_hal_msp.o [1]
+HAL_NVIC_EnableIRQ      0x0802b5fd    0x12  Code  Gb  stm32l4xx_hal_cortex.o [1]
+HAL_NVIC_SetPriority    0x0802b5ab    0x52  Code  Gb  stm32l4xx_hal_cortex.o [1]
+HAL_NVIC_SetPriorityGrouping
+                        0x0802b591    0x1a  Code  Gb  stm32l4xx_hal_cortex.o [1]
+HAL_PWREx_ControlVoltageScaling
+                        0x0802b4cd    0x8a  Code  Gb  stm32l4xx_hal_pwr_ex.o [1]
+HAL_PWREx_GetVoltageRange
+                        0x0802b4c1     0xc  Code  Gb  stm32l4xx_hal_pwr_ex.o [1]
+HAL_RCCEx_GetPeriphCLKFreq
+                        0x0802a5fb   0x476  Code  Gb  stm32l4xx_hal_rcc_ex.o [1]
+HAL_RCCEx_PeriphCLKConfig
+                        0x0802a2a1   0x35a  Code  Gb  stm32l4xx_hal_rcc_ex.o [1]
+HAL_RCC_ClockConfig     0x0802b249   0x16c  Code  Gb  stm32l4xx_hal_rcc.o [1]
+HAL_RCC_DFSDM1_CLK_ENABLED
+                        0x20002778     0x4  Data  Lc  stm32l4xx_hal_msp.o [1]
+HAL_RCC_GetHCLKFreq     0x0802b465     0x6  Code  Gb  stm32l4xx_hal_rcc.o [1]
+HAL_RCC_GetPCLK1Freq    0x0802b46b    0x14  Code  Gb  stm32l4xx_hal_rcc.o [1]
+HAL_RCC_GetPCLK2Freq    0x0802b47f    0x14  Code  Gb  stm32l4xx_hal_rcc.o [1]
+HAL_RCC_GetSysClockFreq
+                        0x0802b3b5    0xb0  Code  Gb  stm32l4xx_hal_rcc.o [1]
+HAL_RCC_OscConfig       0x0802ace1   0x568  Code  Gb  stm32l4xx_hal_rcc.o [1]
+HAL_SAI_Init            0x0802ccc7   0x1ce  Code  Gb  stm32l4xx_hal_sai.o [1]
+HAL_SAI_InitProtocol    0x0802cc99    0x2e  Code  Gb  stm32l4xx_hal_sai.o [1]
+HAL_SAI_MspInit         0x0802c253    0xa8  Code  Gb  stm32l4xx_hal_msp.o [1]
+HAL_SPI_Init            0x0802cfe1    0xac  Code  Gb  stm32l4xx_hal_spi.o [1]
+HAL_SPI_MspInit         0x0802c191    0x60  Code  Gb  stm32l4xx_hal_msp.o [1]
+HAL_SYSTICK_CLKSourceConfig
+                        0x0802b631    0x14  Code  Gb  stm32l4xx_hal_cortex.o [1]
+HAL_SYSTICK_Callback    0x0802b661     0x2  Code  Wk  stm32l4xx_hal_cortex.o [1]
+HAL_SYSTICK_Config      0x0802b60f    0x22  Code  Gb  stm32l4xx_hal_cortex.o [1]
+HAL_SYSTICK_IRQHandler  0x0802b645     0x4  Code  Gb  stm32l4xx_hal_cortex.o [1]
+HAL_TIMEx_MasterConfigSynchronization
+                        0x0802d2ed    0x4e  Code  Gb  stm32l4xx_hal_tim_ex.o [1]
+HAL_TIM_Base_Init       0x0802d08d    0xde  Code  Gb  stm32l4xx_hal_tim.o [1]
+HAL_TIM_Base_MspInit    0x0802c1f1    0x62  Code  Gb  stm32l4xx_hal_msp.o [1]
+HAL_TIM_Base_Start_IT   0x0802d16b    0x16  Code  Gb  stm32l4xx_hal_tim.o [1]
+HAL_TIM_IRQHandler      0x0802d1a1   0x14a  Code  Gb  stm32l4xx_hal_tim.o [1]
+HAL_TIM_PeriodElapsedCallback
+                        0x0802cb9f     0xe  Code  Gb  main.o [1]
+HEAP$$Base              0x20004790           --   Gb  - Linker created -
+HEAP$$Limit             0x20017790           --   Gb  - Linker created -
+HardFault_Handler       0x0803075f     0x2  Code  Gb  stm32l4xx_it.o [1]
+I2C_IsAcknowledgeFailed
+                        0x0802bec5    0x8a  Code  Lc  stm32l4xx_hal_i2c.o [1]
+LOG2_FRAC_TABLE         0x0800a42c    0x18  Data  Lc  rate.o [1]
+LPC_inverse_pred_gain_QA
+                        0x0801fb3d   0x108  Code  Lc  LPC_inv_pred_gain.o [1]
+MSIRangeTable           0x08030634    0x30  Data  Gb  system_stm32l4xx.o [1]
+MX_DFSDM1_Init          0x0802c93d   0x140  Code  Lc  main.o [1]
+MX_GPIO_Init            0x0802ca7d   0x122  Code  Lc  main.o [1]
+MemManage_Handler       0x08030761     0x2  Code  Gb  stm32l4xx_it.o [1]
+NMI_Handler             0x0803075d     0x2  Code  Gb  stm32l4xx_it.o [1]
+PendSV_Handler          0x0803076b     0x2  Code  Gb  stm32l4xx_it.o [1]
+RCCEx_PLLSAI1_Config    0x0802aa71   0x12e  Code  Lc  stm32l4xx_hal_rcc_ex.o [1]
+RCCEx_PLLSAI2_Config    0x0802aba5   0x114  Code  Lc  stm32l4xx_hal_rcc_ex.o [1]
+Receive_Byte_Buffer     0x200025e4    0x60  Data  Gb  test.o [1]
+Region$$Table$$Base     0x080308bc           --   Gb  - Linker created -
+Region$$Table$$Limit    0x080308e0           --   Gb  - Linker created -
+SAI2_client             0x20002788     0x4  Data  Lc  stm32l4xx_hal_msp.o [1]
+SAI_InitI2S             0x0802ceb9    0xa6  Code  Lc  stm32l4xx_hal_sai.o [1]
+SAI_InitPCM             0x0802cf61    0x7e  Code  Lc  stm32l4xx_hal_sai.o [1]
+SMALL_DIV_TABLE         0x0802fd04   0x204  Data  Gb  entcode.o [1]
+SPIRIT1_Basic_Init      0x08029171   0x194  Code  Gb  SPIRIT1.o [1]
+STA350BW_GPIO_I2S_Init  0x0802dc1d    0x5e  Code  Gb  sta350bw.o [1]
+STA350BW_I2C_Delay      0x0802dd1d     0xe  Code  Gb  sta350bw.o [1]
+STA350BW_I2C_Drv        0x2000008c    0x20  Data  Gb  sta350bw.o [1]
+STA350BW_I2C_Read       0x0802dcbb    0x24  Code  Gb  sta350bw.o [1]
+STA350BW_I2C_ReadMulti  0x0802dc7b    0x20  Code  Gb  sta350bw.o [1]
+STA350BW_I2C_Write      0x0802dcdf    0x2c  Code  Gb  sta350bw.o [1]
+STA350BW_I2C_WriteMulti
+                        0x0802dc9b    0x20  Code  Gb  sta350bw.o [1]
+STA350BW_Init           0x0802db4d    0xd0  Code  Gb  sta350bw.o [1]
+SVC_Handler             0x08030767     0x2  Code  Gb  stm32l4xx_it.o [1]
+Send_Byte_Buffer        0x20002584    0x60  Data  Gb  test.o [1]
+Spirit1                 0x20002740    0x20  Data  Gb  SPIRIT1.o [1]
+SpiritCalibrationGetVcoCalData
+                        0x08029989    0x24  Code  Gb  SPIRIT_Calibration.o [1]
+SpiritCalibrationSelectVco
+                        0x08029a2d    0x3a  Code  Gb  SPIRIT_Calibration.o [1]
+SpiritCalibrationSetVcoCalDataRx
+                        0x080299eb    0x3e  Code  Gb  SPIRIT_Calibration.o [1]
+SpiritCalibrationSetVcoCalDataTx
+                        0x080299ad    0x3e  Code  Gb  SPIRIT_Calibration.o [1]
+SpiritCalibrationVco    0x08029945    0x44  Code  Gb  SPIRIT_Calibration.o [1]
+SpiritCmdStrobeCommand  0x0802a279    0x1c  Code  Gb  SPIRIT_Commands.o [1]
+SpiritGpioInit          0x08029cb9    0x26  Code  Gb  SPIRIT_Gpio.o [1]
+SpiritIrq               0x08029ff1    0x6c  Code  Gb  SPIRIT_Irq.o [1]
+SpiritIrqClearStatus    0x0802a05d    0x1c  Code  Gb  SPIRIT_Irq.o [1]
+SpiritIrqDeInit         0x08029fcd    0x24  Code  Gb  SPIRIT_Irq.o [1]
+SpiritLinearFifoReadNumElementsRxFifo
+                        0x0802e2c9    0x24  Code  Gb  SPIRIT_LinearFifo.o [1]
+SpiritManagementSetFrequencyBase
+                        0x0802962d   0x116  Code  Gb  SPIRIT_Management.o [1]
+SpiritManagementWaCmdStrobeRx
+                        0x080298c3    0x2a  Code  Gb  SPIRIT_Management.o [1]
+SpiritManagementWaCmdStrobeTx
+                        0x0802987d    0x46  Code  Gb  SPIRIT_Management.o [1]
+SpiritManagementWaTRxFcMem
+                        0x080298ed     0xa  Code  Gb  SPIRIT_Management.o [1]
+SpiritManagementWaVcoCalibration
+                        0x08029745   0x138  Code  Gb  SPIRIT_Management.o [1]
+SpiritPktBasicAddressesInit
+                        0x08029e31    0x96  Code  Gb  SPIRIT_PktBasic.o [1]
+SpiritPktBasicInit      0x08029ce5   0x14c  Code  Gb  SPIRIT_PktBasic.o [1]
+SpiritPktBasicSetPayloadLength
+                        0x08029ec7    0x56  Code  Gb  SPIRIT_PktBasic.o [1]
+SpiritPktCommonFilterOnCrc
+                        0x0802a20f    0x46  Code  Gb  SPIRIT_PktCommon.o [1]
+SpiritPktCommonGetControlLength
+                        0x0802a1e9    0x26  Code  Gb  SPIRIT_PktCommon.o [1]
+SpiritPktCommonSetDestinationAddress
+                        0x0802a255    0x1e  Code  Gb  SPIRIT_PktCommon.o [1]
+SpiritQiSetRssiThresholddBm
+                        0x08029fa3    0x24  Code  Gb  SPIRIT_Qi.o [1]
+SpiritQiSetSqiThreshold
+                        0x08029f65    0x3e  Code  Gb  SPIRIT_Qi.o [1]
+SpiritQiSqiCheck        0x08029f21    0x44  Code  Gb  SPIRIT_Qi.o [1]
+SpiritRadioGetChannel   0x0802877d    0x22  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioGetChannelSpace
+                        0x0802879f    0x2c  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioGetFrequencyBase
+                        0x08028999    0xdc  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioGetFrequencyOffset
+                        0x080287cd    0x46  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioGetRefDiv    0x0802912d    0x2a  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioGetXtalFrequency
+                        0x08029157     0x6  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioGetdBm2Reg   0x08028d99    0xf8  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioInit         0x0802817d   0x4c8  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioSearchChannelBwME
+                        0x08028b85   0x12c  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioSearchDatarateME
+                        0x08028a7d   0x104  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioSearchWCP    0x080286b9    0xa0  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioSetFrequencyBase
+                        0x08028815   0x17a  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioSetPACwc     0x08029055    0x38  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioSetPALevelMaxIndex
+                        0x0802908d    0x38  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioSetPALeveldBm
+                        0x08028f31   0x11c  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioSetRefDiv    0x080290f1    0x3c  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioSetXtalFlag  0x0802866d    0x4c  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRadioSetXtalFrequency
+                        0x0802915d     0x6  Code  Gb  SPIRIT_Radio.o [1]
+SpiritRefreshStatus     0x08029611    0x1c  Code  Gb  SPIRIT_Types.o [1]
+SpiritSpiCommandStrobes
+                        0x08029407    0x5e  Code  Gb  SPIRIT1.o [1]
+SpiritSpiReadLinearFifo
+                        0x08029469    0x9e  Code  Gb  SPIRIT1.o [1]
+SpiritSpiReadRegisters  0x08029385    0x82  Code  Gb  SPIRIT1.o [1]
+SpiritSpiWriteRegisters
+                        0x08029305    0x80  Code  Gb  SPIRIT1.o [1]
+SpiritTimerComputeRxTimeoutValues
+                        0x0802a0a5    0xe4  Code  Gb  SPIRIT_Timer.o [1]
+SpiritTimerSetRxTimeoutMs
+                        0x0802a07d    0x28  Code  Gb  SPIRIT_Timer.o [1]
+SpiritTimerSetRxTimeoutStopCondition
+                        0x0802a189    0x4e  Code  Gb  SPIRIT_Timer.o [1]
+Spirit_Tx               0x0802950d    0xb2  Code  Gb  SPIRIT1.o [1]
+SysTick_Handler         0x0803076d    0x12  Code  Gb  stm32l4xx_it.o [1]
+SystemClock_Config      0x0802c883    0xba  Code  Gb  main.o [1]
+SystemCoreClock         0x200000bc     0x4  Data  Gb  system_stm32l4xx.o [1]
+SystemInit              0x080305d9    0x3e  Code  Gb  system_stm32l4xx.o [1]
+TIM6_DAC_IRQHandler     0x0803078b     0x6  Code  Gb  stm32l4xx_it.o [1]
+TIM7_IRQHandler         0x08030791     0x6  Code  Gb  stm32l4xx_it.o [1]
+Test_Init               0x0802d6d1    0x20  Code  Gb  test.o [1]
+Test_Receive_Buffer     0x0802d6f1    0x52  Code  Gb  test.o [1]
+UsageFault_Handler      0x08030765     0x2  Code  Gb  stm32l4xx_it.o [1]
+_Rand_idx               0x20000008     0x4  Data  Lc  rand.o [3]
+_Rand_rv                0x2000000c    0x80  Data  Lc  rand.o [3]
+_Randinit               0x20000000     0x1  Data  Gb  rand.o [3]
+_Randseed               0x20000004     0x4  Data  Gb  rand.o [3]
+__aeabi_cdcmpeq         0x0801d901          Code  Gb  DblCmpEq.o [4]
+__aeabi_cdcmple         0x08008fb9          Code  Gb  DblCmpLe.o [4]
+__aeabi_cdrcmple        0x0801d921          Code  Gb  DblCmpGe.o [4]
+__aeabi_d2f             0x08013d7d          Code  Gb  DblToFlt.o [4]
+__aeabi_d2iz            0x08013f65          Code  Gb  DblToI32.o [4]
+__aeabi_d2uiz           0x08013f91          Code  Gb  DblToI32.o [4]
+__aeabi_dadd            0x08013e0d          Code  Gb  DblAdd.o [4]
+__aeabi_ddiv            0x0801d631          Code  Gb  DblDiv.o [4]
+__aeabi_dmul            0x08008e15          Code  Gb  DblMul.o [4]
+__aeabi_dsub            0x080177b5          Code  Gb  DblSub.o [4]
+__aeabi_errno_addr      0x0801d625     0x6  Code  Gb  errno.o [3]
+__aeabi_f2d             0x08013c2d          Code  Gb  FltToDbl.o [4]
+__aeabi_i2d             0x08008de5          Code  Gb  I32ToDbl.o [4]
+__aeabi_lasr            0x0802140d          Code  Gb  S64Shr.o [5]
+__aeabi_llsl            0x080213e9          Code  Gb  I64Shl.o [5]
+__aeabi_memclr          0x08004181          Code  Gb  ABImemclr.o [5]
+__aeabi_memclr4         0x08007a6d          Code  Gb  ABImemclr4.o [5]
+__aeabi_memset          0x0800a445          Code  Gb  ABImemset.o [5]
+__aeabi_ui2d            0x08008df9          Code  Gb  I32ToDbl.o [4]
+__cmain                 0x08030901          Code  Gb  cmain.o [5]
+__data_GetMemChunk      0x0800ddc5    0x2c  Code  Gb  xgetmemchunk.o [3]
+__data_GetMemChunk::start
+                        0x2000278c     0x4  Data  Lc  xgetmemchunk.o [3]
+__exit                  0x0800ddf1    0x14  Code  Gb  exit.o [6]
+__iar_Dint              0x0801d887    0x7a  Code  Gb  xdint.o [4]
+__iar_Dnorm             0x0801d5e1    0x44  Code  Gb  xdnorm.o [4]
+__iar_Dscale            0x08020de1   0x114  Code  Gb  xdscale.o [4]
+__iar_Dtest             0x08020da1    0x30  Code  Gb  xdtest.o [4]
+__iar_Errno             0x200000c0     0x4  Data  Gb  errno.o [3]
+__iar_Exp               0x0801d951   0x2be  Code  Gb  xexp.o [4]
+__iar_Log               0x080165c9   0x25a  Code  Gb  xlog.o [4]
+__iar_Logpoly           0x0801682d    0x76  Code  Gb  xlog.o [4]
+__iar_Memset            0x0800a445          Code  Gb  ABImemset.o [5]
+__iar_Memset4_word      0x0800d44d          Code  Gb  ABImemset48.o [5]
+__iar_Memset8_word      0x0800d44d          Code  Gb  ABImemset48.o [5]
+__iar_Memset_word       0x0800a44d          Code  Gb  ABImemset.o [5]
+__iar_Quad              0x0802e3dd   0x12c  Code  Gb  xquad.o [4]
+__iar_Sin               0x0802de2d   0x3ac  Code  Gb  xsin.o [4]
+__iar_copy_init3        0x08030845    0x2c  Code  Gb  copy_init3.o [5]
+__iar_d2uiz             0x08013f9d          Code  Gb  DblToI32.o [4]
+__iar_dadd              0x08013e21          Code  Gb  DblAdd.o [4]
+__iar_data_init3        0x08030871    0x28  Code  Gb  data_init.o [5]
+__iar_dlfree            0x0800b47f   0x51a  Code  Gb  dlmalloc.o [3]
+__iar_dlmalloc          0x0800b1c9   0x2aa  Code  Gb  dlmalloc.o [3]
+__iar_dsub              0x080177c9          Code  Gb  DblSub.o [4]
+__iar_dsubStart         0x080177db          Code  Gb  DblSub.o [4]
+__iar_edom              0x080177a9          Code  Gb  iarEdom.o [5]
+__iar_floor             0x08013f05          Code  Gb  floor.o [4]
+__iar_floorl            0x08013f05          Code  Gb  floor.o [4]
+__iar_fmod              0x0802e545          Code  Gb  fmod.o [4]
+__iar_fmodl             0x0802e545          Code  Gb  fmod.o [4]
+__iar_init_vfp          0x08030899          Code  Gb  fpinit_M.o [4]
+__iar_program_start     0x0803093d          Code  Gb  cstartup_M.o [5]
+__iar_sqrt              0x08013c8d          Code  Gb  sqrt.o [4]
+__iar_ui2d              0x08008dfd          Code  Gb  I32ToDbl.o [4]
+__iar_unaligned___aeabi_memcpy
+                        0x08004ea5          Code  Gb  ABImemcpy_unaligned.o [5]
+__iar_unaligned___aeabi_memcpy4
+                        0x08004ec5          Code  Gb  ABImemcpy_unaligned.o [5]
+__iar_unaligned___aeabi_memcpy8
+                        0x08004ec5          Code  Gb  ABImemcpy_unaligned.o [5]
+__iar_unaligned___aeabi_memmove
+                        0x08008d6d          Code  Gb  ABImemmove_unaligned.o [5]
+__iar_unaligned___aeabi_memmove4
+                        0x08008d6d          Code  Gb  ABImemmove_unaligned.o [5]
+__iar_unaligned___aeabi_memmove8
+                        0x08008d6d          Code  Gb  ABImemmove_unaligned.o [5]
+__iar_vfp___iar_Log     0x08016929     0xe  Code  Gb  xlog.o [4]
+__iar_vfp___iar_Sin     0x0802e275    0x12  Code  Gb  xsin.o [4]
+__iar_vfp_floor         0x08013ef5          Code  Gb  floor.o [4]
+__iar_vfp_floorl        0x08013ef5          Code  Gb  floor.o [4]
+__iar_vfp_pow           0x0801736b    0x18  Code  Gb  pow.o [4]
+__iar_vfp_round         0x08029a69    0x42  Code  Gb  round.o [4]
+__iar_vfp_sqrt          0x08013c7d          Code  Gb  sqrt.o [4]
+__iar_vfp_sqrtl         0x08013c7d          Code  Gb  sqrt.o [4]
+__iar_vla_alloc2        0x080046d1    0x12  Code  Gb  vla_alloc.o [3]
+__iar_vla_dealloc2      0x080046e3     0x4  Code  Gb  vla_alloc.o [3]
+__iar_zero_init3        0x08030805    0x40  Code  Gb  zero_init3.o [5]
+__vector_table          0x08000000          Data  Gb  startup_stm32l476xx.o [1]
+_call_main              0x0803090d          Code  Gb  cmain.o [5]
+_celt_autocorr          0x0800da05   0x342  Code  Gb  celt_lpc.o [1]
+_celt_lpc               0x0800d481   0x1aa  Code  Gb  celt_lpc.o [1]
+_exit                   0x08030921          Code  Gb  cexit.o [5]
+_gm_                    0x20002194   0x1d8  Data  Lc  dlmalloc.o [3]
+_main                   0x08030917          Code  Gb  cmain.o [5]
+a_dfsdm1ChannelHandle   0x20002720    0x20  Data  Gb  stm32l4xx_hal_dfsdm.o [1]
+abort                   0x0800b9a1     0x6  Code  Gb  abort.o [3]
+alg_quant               0x0800cc45   0x326  Code  Gb  vq.o [1]
+alg_unquant             0x0800cf75    0xe8  Code  Gb  vq.o [1]
+alloc_trim_analysis     0x0800102d   0x48c  Code  Lc  celt_encoder.o [1]
+amp2Log2                0x080096c9    0xf4  Code  Gb  quant_bands.o [1]
+analysis_window         0x0802f5f8   0x3c0  Data  Lc  analysis.o [1]
+band_allocation         0x08024a68    0xe8  Data  Lc  modes.o [1]
+beta_coef               0x080097f4     0x8  Data  Lc  quant_bands.o [1]
+cache_bits50            0x08024d40   0x188  Data  Lc  modes.o [1]
+cache_caps50            0x08024ec8    0xa8  Data  Lc  modes.o [1]
+cache_index50           0x08024c6c    0xd4  Data  Lc  modes.o [1]
+celt_atan2p             0x0800c569   0x10c  Code  Lc  vq.o [1]
+celt_cos_norm           0x08004983    0xca  Code  Gb  mathops.o [1]
+celt_encode_with_ec     0x080023c9  0x19c2  Code  Gb  celt_encoder.o [1]
+celt_encode_with_ec{79}{80}::intensity_histeresis
+                        0x080040cc    0x2c  Data  Lc  celt_encoder.o [1]
+celt_encode_with_ec{79}{80}::intensity_thresholds
+                        0x080040a0    0x2c  Data  Lc  celt_encoder.o [1]
+celt_encoder_get_size   0x08000189    0x2c  Code  Gb  celt_encoder.o [1]
+celt_encoder_init       0x080001b5    0x9e  Code  Gb  celt_encoder.o [1]
+celt_fir_c              0x0800d62d   0x3d6  Code  Gb  celt_lpc.o [1]
+celt_pitch_xcorr_c      0x08007e69   0x1fe  Code  Gb  pitch.o [1]
+celt_rcp                0x08004a4d    0x74  Code  Gb  mathops.o [1]
+celt_rsqrt_norm         0x080048a1    0x60  Code  Gb  mathops.o [1]
+celt_sqrt               0x08004901    0x82  Code  Gb  mathops.o [1]
+check_control_input     0x08014487    0xee  Code  Gb  check_control_input.o [1]
+clt_mdct_forward_c      0x08004ad9   0x3cc  Code  Gb  mdct.o [1]
+comb_filter             0x08004387   0x2ae  Code  Gb  celt.o [1]
+comb_filter::gains      0x080046bc    0x14  Data  Lc  celt.o [1]
+comb_filter_const_c     0x080041c5   0x1c2  Code  Lc  celt.o [1]
+compute_allocation      0x0800a10d   0x31e  Code  Gb  rate.o [1]
+compute_band_energies   0x08004f99   0x17e  Code  Gb  bands.o [1]
+compute_frame_size      0x0800ee71   0x276  Code  Gb  opus_encoder.o [1]
+compute_mdcts           0x08000879   0x186  Code  Lc  celt_encoder.o [1]
+compute_qn::exp2_table8
+                        0x08006044    0x10  Data  Lc  bands.o [1]
+compute_stereo_width    0x0800f0e9   0x1e8  Code  Gb  opus_encoder.o [1]
+compute_theta           0x08005aa9   0x59a  Code  Lc  bands.o [1]
+compute_vbr             0x08002145   0x260  Code  Lc  celt_encoder.o [1]
+cwrsi                   0x0800ded1   0x132  Code  Lc  cwrs.o [1]
+dc_reject               0x0800e399    0x9c  Code  Lc  opus_encoder.o [1]
+dct_table               0x08013934   0x200  Data  Lc  analysis.o [1]
+decode_pulses           0x0800e003    0x54  Code  Gb  cwrs.o [1]
+deinterleave_hadamard   0x08005751   0x13a  Code  Lc  bands.o [1]
+delay_matrix_dec        0x08014e24    0x10  Data  Lc  resampler.o [1]
+delay_matrix_enc        0x08014e14    0x10  Data  Lc  resampler.o [1]
+downmix_int             0x0800ebf9   0x1ca  Code  Gb  opus_encoder.o [1]
+dynalloc_analysis       0x0800159d   0x856  Code  Lc  celt_encoder.o [1]
+eMeans                  0x080097d0    0x1c  Data  Gb  quant_bands.o [1]
+e_prob_model            0x080097fc   0x150  Data  Lc  quant_bands.o [1]
+eband5ms                0x08024a3c    0x2c  Data  Lc  modes.o [1]
+ec_dec_bit_logp         0x0800d345    0x28  Code  Gb  entdec.o [1]
+ec_dec_bits             0x0800d405    0x46  Code  Gb  entdec.o [1]
+ec_dec_normalize        0x0800d269    0x52  Code  Lc  entdec.o [1]
+ec_dec_uint             0x0800d36d    0x98  Code  Gb  entdec.o [1]
+ec_dec_update           0x0800d325    0x20  Code  Gb  entdec.o [1]
+ec_decode               0x0800d2bb    0x5e  Code  Gb  entdec.o [1]
+ec_enc_bit_logp         0x080075ad    0xb0  Code  Gb  entenc.o [1]
+ec_enc_bits             0x0800777f    0x4c  Code  Gb  entenc.o [1]
+ec_enc_done             0x0800784b   0x220  Code  Gb  entenc.o [1]
+ec_enc_icdf             0x0800765d    0xcc  Code  Gb  entenc.o [1]
+ec_enc_init             0x080073c1    0x2a  Code  Gb  entenc.o [1]
+ec_enc_patch_initial_bits
+                        0x080077cb    0x5e  Code  Gb  entenc.o [1]
+ec_enc_shrink           0x08007829    0x22  Code  Gb  entenc.o [1]
+ec_enc_uint             0x08007731    0x4e  Code  Gb  entenc.o [1]
+ec_encode               0x080073eb    0xfe  Code  Gb  entenc.o [1]
+ec_encode_bin           0x080074e9    0xc4  Code  Gb  entenc.o [1]
+ec_ilog                 0x080046e9    0x4a  Code  Gb  entcode.o [1]
+ec_laplace_encode       0x0800dd47    0x7e  Code  Gb  laplace.o [1]
+ec_tell_frac            0x08004733    0x90  Code  Gb  entcode.o [1]
+ec_tell_frac::correction
+                        0x080047c4    0x20  Data  Lc  entcode.o [1]
+encode_pulses           0x0800de77    0x5a  Code  Gb  cwrs.o [1]
+encode_size             0x08017935    0x1e  Code  Gb  opus.o [1]
+exit                    0x0803091b     0x4  Code  Gb  exit.o [3]
+exp_rotation            0x0800c675   0x518  Code  Lc  vq.o [1]
+exp_rotation::SPREAD_FACTOR
+                        0x0800d25c     0xc  Data  Lc  vq.o [1]
+extra_bands             0x0801382c    0x58  Data  Lc  analysis.o [1]
+extract_collapse_mask   0x0800cb8d    0xb6  Code  Lc  vq.o [1]
+fPowerFactors           0x08028eb8    0x78  Data  Lc  SPIRIT_Radio.o [1]
+fast_atan2f             0x08011eb9   0x140  Code  Lc  analysis.o [1]
+fft_bitrev120           0x08025c90    0xf0  Data  Lc  modes.o [1]
+fft_bitrev240           0x08025ab0   0x1e0  Data  Lc  modes.o [1]
+fft_bitrev480           0x080256f0   0x3c0  Data  Lc  modes.o [1]
+fft_bitrev60            0x08025d80    0x78  Data  Lc  modes.o [1]
+fft_state48000_960_0    0x08025df8    0x3c  Data  Lc  modes.o [1]
+fft_state48000_960_1    0x08025e34    0x3c  Data  Lc  modes.o [1]
+fft_state48000_960_2    0x08025e70    0x3c  Data  Lc  modes.o [1]
+fft_state48000_960_3    0x08025eac    0x3c  Data  Lc  modes.o [1]
+fft_twiddles48000_960   0x08024f70   0x780  Data  Lc  modes.o [1]
+floor                   0x08013f05          Code  Gb  floor.o [4]
+floorl                  0x08013f05          Code  Gb  floor.o [4]
+fmod                    0x0802e545          Code  Gb  fmod.o [4]
+fmodl                   0x0802e545          Code  Gb  fmod.o [4]
+frac_div32              0x08004813    0x8e  Code  Gb  mathops.o [1]
+frame_size_select       0x0800edc9    0xa4  Code  Gb  opus_encoder.o [1]
+freq_table_Q16          0x0801df98    0x38  Data  Lc  apply_sine_window_FIX.o [1]
+g_xStatus               0x20002780     0x4  Data  Gb  SPIRIT_Types.o [1]
+gain_fade               0x0800e50d   0x136  Code  Lc  opus_encoder.o [1]
+gen_toc                 0x0800e22f    0x8e  Code  Lc  opus_encoder.o [1]
+haar1                   0x08005a41    0x66  Code  Gb  bands.o [1]
+hdfsdm1_channel6        0x20001f28    0x38  Data  Gb  main.o [1]
+hdfsdm1_channel7        0x20001f60    0x38  Data  Gb  main.o [1]
+hdfsdm1_filter0         0x2000201c    0x54  Data  Gb  main.o [1]
+hdfsdm1_filter1         0x20002070    0x54  Data  Gb  main.o [1]
+hdma_dfsdm1_flt0        0x20002644    0x48  Data  Gb  main.o [1]
+hdma_dfsdm1_flt1        0x2000268c    0x48  Data  Gb  main.o [1]
+hdma_sai2_a             0x200026d4    0x48  Data  Gb  main.o [1]
+hi2c1                   0x200020c4    0x4c  Data  Gb  main.o [1]
+hp_cutoff               0x0800e2bd    0xda  Code  Lc  opus_encoder.o [1]
+hsai_BlockA2            0x20001f98    0x84  Data  Gb  main.o [1]
+hspi1                   0x20001ec4    0x64  Data  Gb  main.o [1]
+htim6                   0x20002110    0x3c  Data  Gb  main.o [1]
+htim7                   0x2000214c    0x3c  Data  Gb  main.o [1]
+hysteresis_decision     0x08004f1d    0x7c  Code  Gb  bands.o [1]
+icwrs                   0x0800de05    0x72  Code  Lc  cwrs.o [1]
+init_caps               0x08004635    0x86  Code  Gb  celt.o [1]
+init_mparams            0x0800a4c9    0x32  Code  Lc  dlmalloc.o [3]
+init_top                0x0800a4fb    0x34  Code  Lc  dlmalloc.o [3]
+intensity_stereo        0x080051f9   0x114  Code  Lc  bands.o [1]
+interleave_hadamard     0x0800588d   0x13a  Code  Lc  bands.o [1]
+internal_Pow            0x08016ed9   0x488  Code  Lc  pow.o [4]
+interp_bits2pulses      0x08009951   0x7b6  Code  Lc  rate.o [1]
+isqrt32                 0x080047e5    0x2e  Code  Gb  mathops.o [1]
+key1_press_down_callback
+                        0x0802e31d    0x2c  Code  Gb  matrix keyboard_CallBack.o [1]
+key1_trigger_callback   0x0802e2f1    0x2c  Code  Gb  matrix keyboard_CallBack.o [1]
+key2_press_down_callback
+                        0x0802e34b     0x2  Code  Gb  matrix keyboard_CallBack.o [1]
+key2_trigger_callback   0x0802e349     0x2  Code  Gb  matrix keyboard_CallBack.o [1]
+key3_press_down_callback
+                        0x0802e365    0x18  Code  Gb  matrix keyboard_CallBack.o [1]
+key3_trigger_callback   0x0802e34d    0x18  Code  Gb  matrix keyboard_CallBack.o [1]
+key4_press_down_callback
+                        0x0802e3b1    0x2c  Code  Gb  matrix keyboard_CallBack.o [1]
+key4_trigger_callback   0x0802e385    0x2c  Code  Gb  matrix keyboard_CallBack.o [1]
+kf_bfly2                0x0800b9a9    0xdc  Code  Lc  kiss_fft.o [1]
+kf_bfly3                0x0800bd8b   0x1c8  Code  Lc  kiss_fft.o [1]
+kf_bfly4                0x0800ba85   0x306  Code  Lc  kiss_fft.o [1]
+kf_bfly5                0x0800bf55   0x4c4  Code  Lc  kiss_fft.o [1]
+limit_warped_coefs      0x08019a69   0x3b6  Code  Lc  noise_shape_analysis_FIX.o [1]
+lnbias                  0x08017388   0x420  Data  Lc  pow.o [4]
+logN400                 0x08024c40    0x2c  Data  Lc  modes.o [1]
+main                    0x0802c581   0x302  Code  Gb  main.o [1]
+main::Count             0x2000218c     0x2  Data  Lc  main.o [1]
+matrix_key_data         0x20002514    0x70  Data  Gb  matrix keyboard.o [1]
+matrix_key_num_control  0x0802da11   0x11a  Code  Lc  matrix keyboard.o [1]
+matrix_key_scan         0x0802d771   0x296  Code  Gb  matrix keyboard.o [1]
+matrix_keyport_init     0x0802d751    0x1e  Code  Gb  matrix keyboard.o [1]
+mdct_twiddles960        0x08025ee8   0xe10  Data  Lc  modes.o [1]
+mlp_process             0x08016941   0x26c  Code  Gb  mlp.o [1]
+mode48000_960_120       0x08026cf8    0x64  Data  Lc  modes.o [1]
+mono_music_bandwidth_thresholds
+                        0x08030684    0x20  Data  Lc  opus_encoder.o [1]
+mono_voice_bandwidth_thresholds
+                        0x08030664    0x20  Data  Lc  opus_encoder.o [1]
+mparams                 0x20002760    0x18  Data  Lc  dlmalloc.o [3]
+net                     0x0802ed90     0xc  Data  Gb  mlp_data.o [1]
+normalise_bands         0x08005119    0xe0  Code  Gb  bands.o [1]
+opus_custom_encoder_ctl
+                        0x08003d99   0x2e2  Code  Gb  celt_encoder.o [1]
+opus_custom_mode_create
+                        0x080040f9    0x82  Code  Gb  modes.o [1]
+opus_encode             0x080108e9    0x78  Code  Gb  opus_encoder.o [1]
+opus_encode_native      0x0800f2e1  0x1606  Code  Gb  opus_encoder.o [1]
+opus_encoder_create     0x0800e643    0xb8  Code  Gb  opus_encoder.o [1]
+opus_encoder_ctl        0x08010971   0x646  Code  Gb  opus_encoder.o [1]
+opus_encoder_init       0x0800e05d   0x1d2  Code  Gb  opus_encoder.o [1]
+opus_fft_c              0x0800c501    0x68  Code  Gb  kiss_fft.o [1]
+opus_fft_impl           0x0800c439    0xc6  Code  Gb  kiss_fft.o [1]
+opus_packet_get_nb_frames
+                        0x08017d05    0x2e  Code  Gb  opus_decoder.o [1]
+opus_packet_get_samples_per_frame
+                        0x08017953    0x6c  Code  Gb  opus.o [1]
+opus_packet_pad         0x08014399    0x5e  Code  Gb  repacketizer.o [1]
+opus_packet_parse_impl  0x080179c1   0x33c  Code  Gb  opus.o [1]
+opus_repacketizer_cat   0x08014051    0x8c  Code  Gb  repacketizer.o [1]
+opus_repacketizer_cat_impl
+                        0x08013fbd    0x94  Code  Lc  repacketizer.o [1]
+opus_repacketizer_out_range_impl
+                        0x080140dd   0x2b6  Code  Gb  repacketizer.o [1]
+ordery_table            0x080059c8    0x78  Data  Lc  bands.o [1]
+patch_transient_decision
+                        0x08000645   0x232  Code  Lc  celt_encoder.o [1]
+pitch_downsample        0x08007a75   0x3f2  Code  Gb  pitch.o [1]
+pitch_search            0x08008069   0x6ec  Code  Gb  pitch.o [1]
+pred_coef               0x080097ec     0x8  Data  Lc  quant_bands.o [1]
+prepend_alloc           0x0800a52f   0x372  Code  Lc  dlmalloc.o [3]
+quant_all_bands         0x08006e0d   0x58e  Code  Gb  bands.o [1]
+quant_band              0x080065ad   0x504  Code  Lc  bands.o [1]
+quant_band_n1           0x08006055    0x8e  Code  Lc  bands.o [1]
+quant_band_stereo       0x08006ac9   0x344  Code  Lc  bands.o [1]
+quant_band{3}{4}::bit_interleave_table
+                        0x080073a0    0x10  Data  Lc  bands.o [1]
+quant_band{7}{8}{10}{11}::bit_deinterleave_table
+                        0x080073b0    0x10  Data  Lc  bands.o [1]
+quant_coarse_energy     0x0800921d   0x370  Code  Gb  quant_bands.o [1]
+quant_coarse_energy_impl
+                        0x08008fe9   0x232  Code  Lc  quant_bands.o [1]
+quant_energy_finalise   0x08009625    0xa2  Code  Gb  quant_bands.o [1]
+quant_fine_energy       0x0800958d    0x98  Code  Gb  quant_bands.o [1]
+quant_partition         0x080060e9   0x4ba  Code  Lc  bands.o [1]
+rand                    0x0802dd4d    0xe0  Code  Gb  rand.o [3]
+remove_doubling         0x08008755   0x5d2  Code  Gb  pitch.o [1]
+renormalise_vector      0x0800d05d    0xd2  Code  Gb  vq.o [1]
+resampling_factor       0x08004189    0x3a  Code  Gb  celt.o [1]
+run_analysis            0x08013885    0x88  Code  Gb  analysis.o [1]
+run_prefilter           0x08001dfd   0x33c  Code  Lc  celt_encoder.o [1]
+s_cCommunicationState   0x200000ac     0x1  Data  Lc  SPIRIT_Management.o [1]
+s_lXtalFrequency        0x200000b8     0x4  Data  Lc  SPIRIT_Radio.o [1]
+s_nDesiredFrequency     0x200000b0     0x4  Data  Lc  SPIRIT_Management.o [1]
+s_vectcBHalfFactor      0x08029940     0x4  Data  Lc  SPIRIT_Management.o [1]
+s_vectcBHalfFactor      0x0802916c     0x4  Data  Lc  SPIRIT_Radio.o [1]
+s_vectcBandRegValue     0x0802993c     0x4  Data  Lc  SPIRIT_Management.o [1]
+s_vectcBandRegValue     0x08028990     0x4  Data  Lc  SPIRIT_Radio.o [1]
+s_vectnBandwidth26M     0x08028ce4    0xb4  Data  Lc  SPIRIT_Radio.o [1]
+s_vectnVCOFreq          0x0802875c    0x20  Data  Lc  SPIRIT_Radio.o [1]
+second_check            0x08008d2c    0x40  Data  Lc  pitch.o [1]
+segment_holding         0x0800a4ad    0x1c  Code  Lc  dlmalloc.o [3]
+sigm_LUT_neg_Q15        0x0801dd58    0x18  Data  Lc  sigm_Q15.o [1]
+sigm_LUT_pos_Q15        0x0801dd40    0x18  Data  Lc  sigm_Q15.o [1]
+sigm_LUT_slope_Q10      0x0801dd28    0x18  Data  Lc  sigm_Q15.o [1]
+silk_A2NLSF             0x0802332d   0x36e  Code  Gb  A2NLSF.o [1]
+silk_A2NLSF_eval_poly   0x08022f59    0xec  Code  Lc  A2NLSF.o [1]
+silk_A2NLSF_init        0x08023045   0x2e6  Code  Lc  A2NLSF.o [1]
+silk_CB_lags_stage2     0x08030508    0x2c  Data  Gb  pitch_est_tables.o [1]
+silk_CB_lags_stage2_10_ms
+                        0x080304e4     0x8  Data  Gb  pitch_est_tables.o [1]
+silk_CB_lags_stage3     0x08030534    0x88  Data  Gb  pitch_est_tables.o [1]
+silk_CB_lags_stage3_10_ms
+                        0x080304ec    0x18  Data  Gb  pitch_est_tables.o [1]
+silk_DIV32_varQ         0x080224d5    0xb6  Code  Lc  burg_modified_FIX.o [1]
+silk_DIV32_varQ         0x0801fd21    0xb6  Code  Lc  find_LTP_FIX.o [1]
+silk_DIV32_varQ         0x08019615    0xb6  Code  Lc  find_pitch_lags_FIX.o [1]
+silk_DIV32_varQ         0x0801a691    0xb6  Code  Lc  find_pred_coefs_FIX.o [1]
+silk_DIV32_varQ         0x08019915    0xb6  Code  Lc  noise_shape_analysis_FIX.o [1]
+silk_DIV32_varQ         0x0801c8f1    0xb6  Code  Lc  NSQ.o [1]
+silk_DIV32_varQ         0x0801b2b5    0xb6  Code  Lc  NSQ_del_dec.o [1]
+silk_DIV32_varQ         0x0801e441    0xb6  Code  Lc  pitch_analysis_core_FIX.o [1]
+silk_DIV32_varQ         0x0801f74d    0xb6  Code  Lc  schur64_FIX.o [1]
+silk_DIV32_varQ         0x080191a5    0xb6  Code  Lc  stereo_find_predictor.o [1]
+silk_DIV32_varQ         0x08015681    0xb6  Code  Lc  stereo_LR_to_MS.o [1]
+silk_Encode             0x0801108d   0xdd4  Code  Gb  enc_API.o [1]
+silk_Get_Encoder_Size   0x08010fc9     0xa  Code  Gb  enc_API.o [1]
+silk_HP_variable_cutoff
+                        0x08015579   0x108  Code  Gb  HP_variable_cutoff.o [1]
+silk_INVERSE32_varQ     0x0801faa1    0x9c  Code  Lc  LPC_inv_pred_gain.o [1]
+silk_INVERSE32_varQ     0x080199cb    0x9c  Code  Lc  noise_shape_analysis_FIX.o [1]
+silk_INVERSE32_varQ     0x0801c9a7    0x9c  Code  Lc  NSQ.o [1]
+silk_INVERSE32_varQ     0x0801b36b    0x9c  Code  Lc  NSQ_del_dec.o [1]
+silk_InitEncoder        0x08010fd3    0x44  Code  Gb  enc_API.o [1]
+silk_LBRR_encode_FIX    0x0801635d   0x19e  Code  Lc  encode_frame_FIX.o [1]
+silk_LBRR_flags_2_iCDF  0x080301b4     0x4  Data  Lc  tables_other.o [1]
+silk_LBRR_flags_3_iCDF  0x080301b8     0x8  Data  Lc  tables_other.o [1]
+silk_LBRR_flags_iCDF_ptr
+                        0x080301c0     0x8  Data  Gb  tables_other.o [1]
+silk_LDL_factorize_FIX  0x08021bc9   0x3b8  Code  Lc  solve_LS_FIX.o [1]
+silk_LPC_analysis_filter
+                        0x0801e369    0xd8  Code  Gb  LPC_analysis_filter.o [1]
+silk_LPC_inverse_pred_gain
+                        0x0801fc4d    0x7c  Code  Gb  LPC_inv_pred_gain.o [1]
+silk_LPC_inverse_pred_gain_Q24
+                        0x0801fcc9    0x56  Code  Gb  LPC_inv_pred_gain.o [1]
+silk_LP_interpolate_filter_taps
+                        0x0801945d   0x156  Code  Lc  LP_variable_cutoff.o [1]
+silk_LP_variable_cutoff
+                        0x080195bd    0x56  Code  Gb  LP_variable_cutoff.o [1]
+silk_LSFCosTab_FIX_Q12  0x080303e0   0x104  Data  Gb  table_LSF_cos.o [1]
+silk_LS_SolveLast_FIX   0x08021f81    0x6e  Code  Lc  solve_LS_FIX.o [1]
+silk_LTPScales_table_Q14
+                        0x080301e8     0x8  Data  Gb  tables_other.o [1]
+silk_LTP_analysis_filter_FIX
+                        0x08020701   0x108  Code  Gb  LTP_analysis_filter_FIX.o [1]
+silk_LTP_gain_BITS_Q5_0
+                        0x0802ff48     0x8  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_BITS_Q5_1
+                        0x0802ff50    0x10  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_BITS_Q5_2
+                        0x0802ff60    0x20  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_BITS_Q5_ptrs
+                        0x0802ff8c     0xc  Data  Gb  tables_LTP.o [1]
+silk_LTP_gain_iCDF_0    0x0802ff0c     0x8  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_iCDF_1    0x0802ff14    0x10  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_iCDF_2    0x0802ff24    0x20  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_iCDF_ptrs
+                        0x0802ff80     0xc  Data  Gb  tables_LTP.o [1]
+silk_LTP_gain_middle_avg_RD_Q14
+                        0x0802ff44     0x2  Data  Gb  tables_LTP.o [1]
+silk_LTP_gain_vq_0      0x0802ff98    0x28  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_vq_0_gain
+                        0x080300bc     0x8  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_vq_1      0x0802ffc0    0x50  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_vq_1_gain
+                        0x080300c4    0x10  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_vq_2      0x08030010    0xa0  Data  Lc  tables_LTP.o [1]
+silk_LTP_gain_vq_2_gain
+                        0x080300d4    0x20  Data  Lc  tables_LTP.o [1]
+silk_LTP_per_index_iCDF
+                        0x0802ff08     0x4  Data  Gb  tables_LTP.o [1]
+silk_LTP_scale_ctrl_FIX
+                        0x080206b1    0x50  Code  Gb  LTP_scale_ctrl_FIX.o [1]
+silk_LTP_vq_gain_ptrs_Q7
+                        0x080300f4     0xc  Data  Gb  tables_LTP.o [1]
+silk_LTP_vq_ptrs_Q7     0x080300b0     0xc  Data  Gb  tables_LTP.o [1]
+silk_LTP_vq_sizes       0x08030100     0x4  Data  Gb  tables_LTP.o [1]
+silk_LTPscale_iCDF      0x080301cc     0x4  Data  Gb  tables_other.o [1]
+silk_Lag_range_stage3   0x080305bc    0x18  Data  Gb  pitch_est_tables.o [1]
+silk_Lag_range_stage3_10_ms
+                        0x08030504     0x4  Data  Gb  pitch_est_tables.o [1]
+silk_NLSF2A             0x08023869   0x3e0  Code  Gb  NLSF2A.o [1]
+silk_NLSF2A::ordering10
+                        0x08023c6c     0xc  Data  Lc  NLSF2A.o [1]
+silk_NLSF2A::ordering16
+                        0x08023c5c    0x10  Data  Lc  NLSF2A.o [1]
+silk_NLSF2A_find_poly   0x08023735   0x134  Code  Lc  NLSF2A.o [1]
+silk_NLSF_CB1_NB_MB_Q8  0x0802fa04   0x140  Data  Lc  tables_NLSF_CB_NB_MB.o [1]
+silk_NLSF_CB1_WB_Q8     0x0802ed9c   0x200  Data  Lc  tables_NLSF_CB_WB.o [1]
+silk_NLSF_CB1_iCDF_NB_MB
+                        0x0802fb44    0x40  Data  Lc  tables_NLSF_CB_NB_MB.o [1]
+silk_NLSF_CB1_iCDF_WB   0x0802ef9c    0x40  Data  Lc  tables_NLSF_CB_WB.o [1]
+silk_NLSF_CB2_BITS_NB_MB_Q5
+                        0x0802fc6c    0x48  Data  Lc  tables_NLSF_CB_NB_MB.o [1]
+silk_NLSF_CB2_BITS_WB_Q5
+                        0x0802f124    0x48  Data  Lc  tables_NLSF_CB_WB.o [1]
+silk_NLSF_CB2_SELECT_NB_MB
+                        0x0802fb84    0xa0  Data  Lc  tables_NLSF_CB_NB_MB.o [1]
+silk_NLSF_CB2_SELECT_WB
+                        0x0802efdc   0x100  Data  Lc  tables_NLSF_CB_WB.o [1]
+silk_NLSF_CB2_iCDF_NB_MB
+                        0x0802fc24    0x48  Data  Lc  tables_NLSF_CB_NB_MB.o [1]
+silk_NLSF_CB2_iCDF_WB   0x0802f0dc    0x48  Data  Lc  tables_NLSF_CB_WB.o [1]
+silk_NLSF_CB_NB_MB      0x0802fce0    0x24  Data  Gb  tables_NLSF_CB_NB_MB.o [1]
+silk_NLSF_CB_WB         0x0802f1b0    0x24  Data  Gb  tables_NLSF_CB_WB.o [1]
+silk_NLSF_DELTA_MIN_NB_MB_Q15
+                        0x0802fcc8    0x18  Data  Lc  tables_NLSF_CB_NB_MB.o [1]
+silk_NLSF_DELTA_MIN_WB_Q15
+                        0x0802f18c    0x24  Data  Lc  tables_NLSF_CB_WB.o [1]
+silk_NLSF_EXT_iCDF      0x08030210     0x8  Data  Gb  tables_other.o [1]
+silk_NLSF_PRED_NB_MB_Q8
+                        0x0802fcb4    0x14  Data  Lc  tables_NLSF_CB_NB_MB.o [1]
+silk_NLSF_PRED_WB_Q8    0x0802f16c    0x20  Data  Lc  tables_NLSF_CB_WB.o [1]
+silk_NLSF_VQ            0x080242e9    0x56  Code  Gb  NLSF_VQ.o [1]
+silk_NLSF_VQ_weights_laroia
+                        0x08023c79    0xd2  Code  Gb  NLSF_VQ_weights_laroia.o [1]
+silk_NLSF_decode        0x080248b9   0x182  Code  Gb  NLSF_decode.o [1]
+silk_NLSF_del_dec_quant
+                        0x08024341   0x578  Code  Gb  NLSF_del_dec_quant.o [1]
+silk_NLSF_encode        0x08023d4d   0x31e  Code  Gb  NLSF_encode.o [1]
+silk_NLSF_interpolation_factor_iCDF
+                        0x080301d8     0x8  Data  Gb  tables_other.o [1]
+silk_NLSF_stabilize     0x0802406d   0x27c  Code  Gb  NLSF_stabilize.o [1]
+silk_NLSF_unpack        0x08018e85    0x74  Code  Gb  NLSF_unpack.o [1]
+silk_NSQ_c              0x0801ca43   0x242  Code  Gb  NSQ.o [1]
+silk_NSQ_del_dec_c      0x0801b409   0x674  Code  Gb  NSQ_del_dec.o [1]
+silk_P_Ana_calc_corr_st3
+                        0x0801f2ad    0xee  Code  Lc  pitch_analysis_core_FIX.o [1]
+silk_P_Ana_calc_energy_st3
+                        0x0801f3a1   0x122  Code  Lc  pitch_analysis_core_FIX.o [1]
+silk_Quantization_Offsets_Q10
+                        0x080301e0     0x8  Data  Gb  tables_other.o [1]
+silk_QueryEncoder       0x08011017    0x74  Code  Lc  enc_API.o [1]
+silk_Resampler_1_2_COEFS
+                        0x080302e0    0x1c  Data  Gb  resampler_rom.o [1]
+silk_Resampler_1_3_COEFS
+                        0x080302fc    0x28  Data  Gb  resampler_rom.o [1]
+silk_Resampler_1_4_COEFS
+                        0x08030324    0x28  Data  Gb  resampler_rom.o [1]
+silk_Resampler_1_6_COEFS
+                        0x0803034c    0x28  Data  Gb  resampler_rom.o [1]
+silk_Resampler_2_3_COEFS
+                        0x080302b8    0x28  Data  Gb  resampler_rom.o [1]
+silk_Resampler_2_3_COEFS_LQ
+                        0x08030374     0xc  Data  Gb  resampler_rom.o [1]
+silk_Resampler_3_4_COEFS
+                        0x0803027c    0x3c  Data  Gb  resampler_rom.o [1]
+silk_SNR_table_Q1       0x08030164    0x10  Data  Gb  tables_other.o [1]
+silk_SQRT_APPROX        0x080198c5    0x50  Code  Lc  noise_shape_analysis_FIX.o [1]
+silk_SQRT_APPROX        0x08019155    0x50  Code  Lc  stereo_find_predictor.o [1]
+silk_SQRT_APPROX        0x08017d35    0x50  Code  Lc  VAD.o [1]
+silk_TargetRate_table_MB
+                        0x08030124    0x20  Data  Gb  tables_other.o [1]
+silk_TargetRate_table_NB
+                        0x08030104    0x20  Data  Gb  tables_other.o [1]
+silk_TargetRate_table_WB
+                        0x08030144    0x20  Data  Gb  tables_other.o [1]
+silk_Transition_LP_A_Q28
+                        0x08030254    0x28  Data  Gb  tables_other.o [1]
+silk_Transition_LP_B_Q28
+                        0x08030218    0x3c  Data  Gb  tables_other.o [1]
+silk_VAD_GetNoiseLevels
+                        0x08018311    0xd2  Code  Lc  VAD.o [1]
+silk_VAD_GetSA_Q8_c     0x08017ded   0x522  Code  Gb  VAD.o [1]
+silk_VAD_Init           0x08017d85    0x56  Code  Gb  VAD.o [1]
+silk_VQ_WMat_EC_c       0x08022277   0x25e  Code  Gb  VQ_WMat_EC.o [1]
+silk_ana_filt_bank_1    0x0801dc19    0xbc  Code  Gb  ana_filt_bank_1.o [1]
+silk_apply_sine_window  0x0801dea9    0xf0  Code  Gb  apply_sine_window_FIX.o [1]
+silk_autocorr           0x0801dfd1    0x2c  Code  Gb  autocorr_FIX.o [1]
+silk_biquad_alt         0x08013b35    0xf6  Code  Gb  biquad_alt.o [1]
+silk_burg_modified_c    0x0802258d   0x9cc  Code  Gb  burg_modified_FIX.o [1]
+silk_bwexpander         0x0801e2dd    0x8c  Code  Gb  bwexpander.o [1]
+silk_bwexpander_32      0x0801f4e5    0x6a  Code  Gb  bwexpander_32.o [1]
+silk_control_SNR        0x080164fd    0xcc  Code  Gb  control_SNR.o [1]
+silk_control_audio_bandwidth
+                        0x080183f5    0xf4  Code  Gb  control_audio_bandwidth.o [1]
+silk_control_encoder    0x08014575    0xbc  Code  Gb  control_codec.o [1]
+silk_corrMatrix_FIX     0x080214f9   0x530  Code  Gb  corrMatrix_FIX.o [1]
+silk_corrVector_FIX     0x08021431    0xc6  Code  Gb  corrMatrix_FIX.o [1]
+silk_delta_gain_iCDF    0x080307d8    0x2c  Data  Gb  tables_gain.o [1]
+silk_encode_do_VAD_FIX  0x08015d5d    0x62  Code  Gb  encode_frame_FIX.o [1]
+silk_encode_frame_FIX   0x08015dc1   0x590  Code  Gb  encode_frame_FIX.o [1]
+silk_encode_indices     0x08014eb1   0x27c  Code  Gb  encode_indices.o [1]
+silk_encode_pulses      0x0801512d   0x44c  Code  Gb  encode_pulses.o [1]
+silk_encode_signs       0x080190d9    0x76  Code  Gb  code_signs.o [1]
+silk_find_LPC_FIX       0x080209dd   0x178  Code  Gb  find_LPC_FIX.o [1]
+silk_find_LTP_FIX       0x0801fdd9   0x716  Code  Gb  find_LTP_FIX.o [1]
+silk_find_pitch_lags_FIX
+                        0x080196cd   0x1f2  Code  Gb  find_pitch_lags_FIX.o [1]
+silk_find_pred_coefs_FIX
+                        0x0801a749   0x282  Code  Gb  find_pred_coefs_FIX.o [1]
+silk_gain_iCDF          0x080307c0    0x18  Data  Gb  tables_gain.o [1]
+silk_gains_ID           0x0801b26d    0x46  Code  Gb  gain_quant.o [1]
+silk_gains_dequant      0x0801b1e9    0x82  Code  Gb  gain_quant.o [1]
+silk_gains_quant        0x0801b0cd   0x11c  Code  Gb  gain_quant.o [1]
+silk_init_encoder       0x08014447    0x40  Code  Gb  init_encoder.o [1]
+silk_inner_prod16_aligned_64_c
+                        0x08020959    0x84  Code  Gb  vector_ops_FIX.o [1]
+silk_inner_prod_aligned
+                        0x080208f9    0x5e  Code  Gb  vector_ops_FIX.o [1]
+silk_inner_prod_aligned_scale
+                        0x0801de35    0x72  Code  Gb  inner_prod_aligned.o [1]
+silk_insertion_sort_decreasing_int16
+                        0x08021271   0x13a  Code  Gb  sort.o [1]
+silk_insertion_sort_increasing
+                        0x08021139   0x136  Code  Gb  sort.o [1]
+silk_insertion_sort_increasing_all_values_int16
+                        0x080213ad    0x3c  Code  Gb  sort.o [1]
+silk_interpolate        0x080236a1    0x94  Code  Gb  interpolate.o [1]
+silk_k2a                0x0801e1d9   0x104  Code  Gb  k2a_FIX.o [1]
+silk_k2a_Q16            0x0801f969   0x138  Code  Gb  k2a_Q16_FIX.o [1]
+silk_lin2log            0x08011e71    0x48  Code  Gb  lin2log.o [1]
+silk_log2lin            0x080143f7    0x50  Code  Gb  log2lin.o [1]
+silk_lsb_iCDF           0x080301c8     0x2  Data  Gb  tables_other.o [1]
+silk_max_pulses_table   0x0802f1d4     0x4  Data  Gb  tables_pulses_per_block.o [1]
+silk_nb_cbk_searchs_stage3
+                        0x080305d4     0x4  Data  Gb  pitch_est_tables.o [1]
+silk_noise_shape_analysis_FIX
+                        0x08019e21   0x85e  Code  Gb  noise_shape_analysis_FIX.o [1]
+silk_noise_shape_quantizer
+                        0x0801cc85   0x64e  Code  Lc  NSQ.o [1]
+silk_noise_shape_quantizer_del_dec
+                        0x0801ba81   0xade  Code  Lc  NSQ_del_dec.o [1]
+silk_nsq_del_dec_scale_states
+                        0x0801c571   0x37e  Code  Lc  NSQ_del_dec.o [1]
+silk_nsq_scale_states   0x0801d2e9   0x2f8  Code  Lc  NSQ.o [1]
+silk_pitch_analysis_core
+                        0x0801e4f9   0xdb2  Code  Gb  pitch_analysis_core_FIX.o [1]
+silk_pitch_contour_10_ms_NB_iCDF
+                        0x08030758     0x4  Data  Gb  tables_pitch_lag.o [1]
+silk_pitch_contour_10_ms_iCDF
+                        0x0803074c     0xc  Data  Gb  tables_pitch_lag.o [1]
+silk_pitch_contour_NB_iCDF
+                        0x08030740     0xc  Data  Gb  tables_pitch_lag.o [1]
+silk_pitch_contour_iCDF
+                        0x0803071c    0x24  Data  Gb  tables_pitch_lag.o [1]
+silk_pitch_delta_iCDF   0x08030704    0x18  Data  Gb  tables_pitch_lag.o [1]
+silk_pitch_lag_iCDF     0x080306e4    0x20  Data  Gb  tables_pitch_lag.o [1]
+silk_prefilt_FIX        0x0801afc1   0x106  Code  Lc  prefilter_FIX.o [1]
+silk_prefilter_FIX      0x0801addd   0x1e4  Code  Gb  prefilter_FIX.o [1]
+silk_process_NLSFs      0x08020b55   0x15c  Code  Gb  process_NLSFs.o [1]
+silk_process_gains_FIX  0x0801a9d1   0x2f0  Code  Gb  process_gains_FIX.o [1]
+silk_pulses_per_block_BITS_Q5
+                        0x0802f28c    0xa4  Data  Gb  tables_pulses_per_block.o [1]
+silk_pulses_per_block_iCDF
+                        0x0802f1d8    0xb4  Data  Gb  tables_pulses_per_block.o [1]
+silk_quant_LTP_gains    0x08020501   0x1b0  Code  Gb  quant_LTP_gains.o [1]
+silk_rate_levels_BITS_Q5
+                        0x0802f344    0x14  Data  Gb  tables_pulses_per_block.o [1]
+silk_rate_levels_iCDF   0x0802f330    0x14  Data  Gb  tables_pulses_per_block.o [1]
+silk_regularize_correlations_FIX
+                        0x08021a29    0x76  Code  Gb  regularize_correlations_FIX.o [1]
+silk_resampler          0x08014d1d    0xf6  Code  Gb  resampler.o [1]
+silk_resampler_down2    0x08020ef5    0x94  Code  Gb  resampler_down2.o [1]
+silk_resampler_down2_3  0x08020f89   0x1b0  Code  Gb  resampler_down2_3.o [1]
+silk_resampler_frac_FIR_12
+                        0x08030380    0x60  Data  Gb  resampler_rom.o [1]
+silk_resampler_init     0x08014a75   0x28a  Code  Gb  resampler.o [1]
+silk_resampler_private_AR2
+                        0x0801dd71    0x48  Code  Gb  resampler_private_AR2.o [1]
+silk_resampler_private_IIR_FIR
+                        0x080186ed    0x7a  Code  Gb  resampler_private_IIR_FIR.o [1]
+silk_resampler_private_IIR_FIR_INTERPOL
+                        0x08018619    0xcc  Code  Lc  resampler_private_IIR_FIR.o [1]
+silk_resampler_private_down_FIR
+                        0x08018ddd    0xa6  Code  Gb  resampler_private_down_FIR.o [1]
+silk_resampler_private_down_FIR_INTERPOL
+                        0x08018769   0x66e  Code  Lc  resampler_private_down_FIR.o [1]
+silk_resampler_private_up2_HQ
+                        0x080184e9   0x120  Code  Gb  resampler_private_up2_HQ.o [1]
+silk_resampler_private_up2_HQ_wrapper
+                        0x08018615     0x2  Code  Gb  resampler_private_up2_HQ.o [1]
+silk_residual_energy16_covar_FIX
+                        0x08021ff1   0x286  Code  Gb  residual_energy16_FIX.o [1]
+silk_residual_energy_FIX
+                        0x08020cb1    0xee  Code  Gb  residual_energy_FIX.o [1]
+silk_scale_copy_vector16
+                        0x08020809    0x84  Code  Gb  vector_ops_FIX.o [1]
+silk_scale_vector32_Q26_lshift_18
+                        0x0802088d    0x6c  Code  Gb  vector_ops_FIX.o [1]
+silk_schur              0x0801dffd   0x1dc  Code  Gb  schur_FIX.o [1]
+silk_schur64            0x0801f805   0x160  Code  Gb  schur64_FIX.o [1]
+silk_setup_LBRR         0x080149eb    0x8a  Code  Lc  control_codec.o [1]
+silk_setup_complexity   0x080148ed    0xfe  Code  Lc  control_codec.o [1]
+silk_setup_fs           0x080146f7   0x1ca  Code  Lc  control_codec.o [1]
+silk_setup_resamplers   0x08014631    0xc6  Code  Lc  control_codec.o [1]
+silk_shell_code_table0  0x0802f358    0x98  Data  Gb  tables_pulses_per_block.o [1]
+silk_shell_code_table1  0x0802f3f0    0x98  Data  Gb  tables_pulses_per_block.o [1]
+silk_shell_code_table2  0x0802f488    0x98  Data  Gb  tables_pulses_per_block.o [1]
+silk_shell_code_table3  0x0802f520    0x98  Data  Gb  tables_pulses_per_block.o [1]
+silk_shell_code_table_offsets
+                        0x0802f5b8    0x14  Data  Gb  tables_pulses_per_block.o [1]
+silk_shell_encoder      0x08018ef9   0x1ca  Code  Gb  shell_coder.o [1]
+silk_sigm_Q15           0x0801dcd5    0x52  Code  Gb  sigm_Q15.o [1]
+silk_sign_iCDF          0x0802f5cc    0x2c  Data  Gb  tables_pulses_per_block.o [1]
+silk_solve_LDL_FIX      0x08021aa1   0x126  Code  Gb  solve_LS_FIX.o [1]
+silk_stereo_LR_to_MS    0x08015739   0x61e  Code  Gb  stereo_LR_to_MS.o [1]
+silk_stereo_encode_mid_only
+                        0x08014e97     0x8  Code  Gb  stereo_encode_pred.o [1]
+silk_stereo_encode_pred
+                        0x08014e35    0x62  Code  Gb  stereo_encode_pred.o [1]
+silk_stereo_find_predictor
+                        0x0801925b   0x146  Code  Gb  stereo_find_predictor.o [1]
+silk_stereo_only_code_mid_iCDF
+                        0x080301b0     0x2  Data  Gb  tables_other.o [1]
+silk_stereo_pred_joint_iCDF
+                        0x08030194    0x1c  Data  Gb  tables_other.o [1]
+silk_stereo_pred_quant_Q13
+                        0x08030174    0x20  Data  Gb  tables_other.o [1]
+silk_stereo_quant_pred  0x080193a5    0xb8  Code  Gb  stereo_quant_pred.o [1]
+silk_sum_sqr_shift      0x0801ddb9    0x7c  Code  Gb  sum_sqr_shift.o [1]
+silk_type_offset_VAD_iCDF
+                        0x080301d0     0x4  Data  Gb  tables_other.o [1]
+silk_type_offset_no_VAD_iCDF
+                        0x080301d4     0x2  Data  Gb  tables_other.o [1]
+silk_uniform3_iCDF      0x080301f0     0x4  Data  Gb  tables_other.o [1]
+silk_uniform4_iCDF      0x080301f4     0x4  Data  Gb  tables_other.o [1]
+silk_uniform5_iCDF      0x080301f8     0x8  Data  Gb  tables_other.o [1]
+silk_uniform6_iCDF      0x08030200     0x8  Data  Gb  tables_other.o [1]
+silk_uniform8_iCDF      0x08030208     0x8  Data  Gb  tables_other.o [1]
+silk_warped_LPC_analysis_filter_FIX_c
+                        0x0801acc1   0x11a  Code  Gb  prefilter_FIX.o [1]
+silk_warped_autocorrelation_FIX
+                        0x0801f551   0x1fa  Code  Gb  warped_autocorrelation_FIX.o [1]
+small_energy_icdf       0x0800994c     0x4  Data  Lc  quant_bands.o [1]
+spread_icdf             0x0800409c     0x4  Data  Lc  celt_encoder.o [1]
+spreading_decision      0x08005481   0x2be  Code  Gb  bands.o [1]
+sqrt                    0x08013c8d          Code  Gb  sqrt.o [4]
+sqrtl                   0x08013c8d          Code  Gb  sqrt.o [4]
+srand                   0x0802dd2d    0x20  Code  Gb  srand.o [3]
+static_mode_list        0x08026d5c     0x4  Data  Lc  modes.o [1]
+stereo_analysis         0x080014c9    0xd4  Code  Lc  celt_encoder.o [1]
+stereo_fade             0x0800e435    0xd8  Code  Lc  opus_encoder.o [1]
+stereo_itheta           0x0800d131   0x12a  Code  Gb  vq.o [1]
+stereo_merge            0x0800530d   0x172  Code  Lc  bands.o [1]
+stereo_music_bandwidth_thresholds
+                        0x080306c4    0x20  Data  Lc  opus_encoder.o [1]
+stereo_voice_bandwidth_thresholds
+                        0x080306a4    0x20  Data  Lc  opus_encoder.o [1]
+sys_alloc               0x0800a8a1   0x388  Code  Lc  dlmalloc.o [3]
+tansig_table            0x08016bb4   0x324  Data  Lc  mlp.o [1]
+tapset_icdf             0x08030950     0x4  Data  Lc  celt_encoder.o [1]
+tbands                  0x0802f9b8    0x4c  Data  Lc  analysis.o [1]
+tf_analysis             0x08000a01   0x4fc  Code  Lc  celt_encoder.o [1]
+tf_encode               0x08000efd   0x128  Code  Lc  celt_encoder.o [1]
+tf_select_table         0x080308e0    0x20  Data  Gb  celt.o [1]
+tiltWeights             0x080183e4    0x10  Data  Lc  VAD.o [1]
+tmalloc_large           0x0800ac35   0x380  Code  Lc  dlmalloc.o [3]
+tmalloc_small           0x0800afb5   0x206  Code  Lc  dlmalloc.o [3]
+tonality_analysis       0x080121d1  0x1650  Code  Lc  analysis.o [1]
+tonality_analysis_init  0x08011ff9    0x14  Code  Gb  analysis.o [1]
+tonality_analysis_reset
+                        0x0801200d    0x10  Code  Gb  analysis.o [1]
+tonality_get_info       0x0801201d   0x190  Code  Gb  analysis.o [1]
+topo                    0x0802ed84     0xc  Data  Lc  mlp_data.o [1]
+transient_analysis      0x08000255   0x370  Code  Lc  celt_encoder.o [1]
+transient_analysis::inv_table
+                        0x080005c4    0x80  Data  Lc  celt_encoder.o [1]
+transient_viterbi       0x0800e749   0x4a2  Code  Lc  opus_encoder.o [1]
+trim_icdf               0x08004090     0xc  Data  Lc  celt_encoder.o [1]
+user_bitrate_to_bitrate
+                        0x0800e6fb    0x4c  Code  Lc  opus_encoder.o [1]
+uwTick                  0x20002784     0x4  Data  Gb  stm32l4xx_hal.o [1]
+v_dfsdm1ChannelCounter  0x2000271c     0x4  Data  Gb  stm32l4xx_hal_dfsdm.o [1]
+weights                 0x0802e6ec   0x698  Data  Lc  mlp_data.o [1]
+window120               0x08024b50    0xf0  Data  Lc  modes.o [1]
+xDoVcoCalibrationWA     0x200000b4     0x1  Data  Lc  SPIRIT_Radio.o [1]
+
+
+[1] = D:\IAR_Code\Walkie_Talkie\EWARM\Walkie_Talkie\Obj
+[2] = command line
+[3] = dl7M_tlf.a
+[4] = m7M_tls.a
+[5] = rt7M_tl.a
+[6] = shb_l.a
+
+  176 540 bytes of readonly  code memory
+   22 656 bytes of readonly  data memory
+   96 144 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
