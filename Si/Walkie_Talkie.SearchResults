@@ -1,0 +1,3 @@
+---- Temp_Count Matches (2 in 2 files) ----
+Main.c (src):      uint8_t Temp_Count;
+SPIRIT1.c (c_code\spirit1):{ uint8_t Temp_Count;
