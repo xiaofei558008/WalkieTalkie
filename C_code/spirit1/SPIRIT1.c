@@ -104,6 +104,8 @@ void SPIRIT1_Basic_Init(Spirit_TypeDef*       Spirit_Temp,
 { //Init MCU GPIO.
 
   //Init MCU SPI.
+  //Enable SPI1.
+  __HAL_SPI_ENABLE(&hspi1);
 
   //Set CS High.
   SPIRIT1_SPI_CS_H();
@@ -124,8 +126,8 @@ void SPIRIT1_Basic_Init(Spirit_TypeDef*       Spirit_Temp,
   Spirit_Temp->Tx.Buffer = Send_Byte_Buffer;
 
 #elif 1
-  Spirit_Temp->Rx.Buffer = (uint8_t*)Audio.Audio_Buffer_In_Encode;
-  Spirit_Temp->Tx.Buffer = (uint8_t*)Audio.Audio_Buffer_Out_Encode;
+  ////Spirit_Temp->Rx.Buffer = (uint8_t*)&Audio.Decode.Encode_In_Buffer[0];
+  ////Spirit_Temp->Tx.Buffer = (uint8_t*)&Audio.Encode.Encode_Out_Buffer[0];
 
 #endif
 
@@ -164,7 +166,7 @@ void SPIRIT1_Basic_Init(Spirit_TypeDef*       Spirit_Temp,
     .nChannelSpace      = 20e3,     //CHANNEL_SPACE,
     .cChannelNumber     = 0,        //CHANNEL_NUMBER,
     .xModulationSelect  = FSK,      //MODULATION_SELECT,
-    .lDatarate          = 50000,     //DATARATE,
+    .lDatarate          = 50000,    //DATARATE,
     .lFreqDev           = 20e3,     //FREQ_DEVIATION,
     .lBandwidth         = 100E3     //BANDWIDTH
   };

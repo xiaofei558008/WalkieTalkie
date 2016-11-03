@@ -1,10 +1,10 @@
 [StLinkDriver]
-stlinkserialNo=67104247
+stlinkserialNo=67072758
 stlinkfoundProbes=
 CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
 [DebugChecksum]
-Checksum=-1890638214
+Checksum=2047519812
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -43,21 +43,19 @@ ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
 [struct_types]
 Fmt0=OpusEncoder-celt_enc_offset	4	0
-Fmt1=SpiritStatus-	4	0
-Fmt2=SpiritStatus-ANT_SELECT	4	0
-Fmt3=SpiritStatus-ERROR_LOCK	4	0
-Fmt4=SpiritStatus-RX_FIFO_EMPTY	4	0
-Fmt5=SpiritStatus-TX_FIFO_FULL	4	0
-Fmt6=SpiritStatus-XO_ON	4	0
-Fmt7=Spirit_Ver_TypeDef-PartNum	4	0
-Fmt8=Spirit_Ver_TypeDef-Version	4	0
-Fmt9=struct <Unnamed 20>-Frame_Count	3	0
-Fmt10=struct <Unnamed 20>-Receive_Len	3	0
+Fmt1=struct <Unnamed 20>-Encode_Out_Len	3	0
 [array_types]
-Fmt0=int16_t[240]	4	0
-Fmt1=int8_t[240]	4	0
-Fmt2=uint32_t[2048]	4	0
-Fmt3=uint8_t[96]	4	0
+Fmt0=int16_t[240]	3	0
+Fmt1=int32_t[240]	3	0
+Fmt2=int8_t[240]	4	0
+Fmt3=uint32_t[2048]	4	0
+Fmt4=uint8_t[20]	4	0
+Fmt5=uint8_t[2]	3	0
+Fmt6=uint8_t[30]	4	0
+Fmt7=uint8_t[4]	4	0
+Fmt8=uint8_t[96]	4	0
+Fmt9=unsigned char[20]	4	0
+Fmt10=unsigned char[96]	4	0
 [watch_formats]
 Fmt0={W}42:Receive_Count	4	0
 Fmt1={W}42:Receive_Len	4	0
@@ -122,12 +120,11 @@ ShowTiming=1
 [Disassemble mode]
 mode=0
 [Breakpoints2]
-Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main_Backup.c}.223.7" 0 0 1 "" 0 "" 0
-Bp1=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Opus\silk\enc_API.c}.545.5" 0 0 1 "" 0 "" 0
-Bp2=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Opus\silk\enc_API.c}.498.13" 0 0 1 "" 0 "" 0
-Bp3=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Opus\silk\fixed\encode_frame_FIX.c}.299.13" 0 0 1 "" 0 "" 0
-Bp4=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Opus\silk\fixed\encode_frame_FIX.c}.197.21" 0 0 1 "" 0 "" 0
-Count=5
+Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Audio.c}.264.3" 0 0 1 "" 0 "" 0
+Bp1=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Audio.c}.264.3" 0 0 1 "" 0 "" 0
+Bp2=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Audio.c}.264.3" 0 0 1 "" 0 "" 0
+Bp3=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\spirit1\SPIRIT1.c}.174.3" 0 0 1 "" 0 "" 0
+Count=4
 [Aliases]
 Count=0
 SuppressDialog=0

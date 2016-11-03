@@ -37,6 +37,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "SPIRIT1.h"
 #include "sta350bw.h"
@@ -44,7 +45,6 @@
 #include "matrix keyboard.h"
 #include "Audio.h"
 #include "test.h"
-#include "AudioSin.h"
 #include "opus.h"
 
 /* USER CODE END Includes */
@@ -69,6 +69,13 @@ DMA_HandleTypeDef hdma_spi1_tx;
 TIM_HandleTypeDef htim6;
 TIM_HandleTypeDef htim7;
 
+UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart3;
+DMA_HandleTypeDef hdma_usart1_rx;
+DMA_HandleTypeDef hdma_usart1_tx;
+DMA_HandleTypeDef hdma_usart3_rx;
+DMA_HandleTypeDef hdma_usart3_tx;
+
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 
@@ -85,6 +92,8 @@ static void MX_SPI1_Init(void);
 static void MX_TIM6_Init(void);
 static void MX_TIM7_Init(void);
 static void MX_DFSDM1_Init(void);
+static void MX_USART1_UART_Init(void);
+static void MX_USART3_UART_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -92,7 +101,6 @@ static void MX_DFSDM1_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-#define Audio_Tail_Len      4
 
 OpusEncoder* Enc = NULL;
 OpusDecoder* Dec = NULL;
@@ -100,18 +108,18 @@ OpusDecoder* Dec = NULL;
 uint8_t       Flag_DFSDM_Int[4];
 uint16_t      Count;
 
-uint8_t       Tail_Same_Count;
-const uint8_t Audio_Tail[Audio_Tail_Len] = {0x55,0xaa,0x55,0xaa};
-
 /* USER CODE END 0 */
+
 int main(void)
 {
 
   /* USER CODE BEGIN 1 */
 
+  //disable all IRQ.
+  __disable_irq();
 
-  int16_t  Random_Data[Audio_Buffer_In_Size],
-           Encode_Temp[Audio_Buffer_In_Size];
+  //Audio Init.
+  Audio_Init(&Audio);
 
   //Communication Init.
   Com_Init(&Com);
@@ -123,10 +131,7 @@ int main(void)
   int channels = 1;
 
   opus_int32 sampling_rate = 48000,
-                  bit_rate = 10000;
-  /* Wireless Copy Temp Count.
-  */
-  uint8_t Copy_Count;
+                  bit_rate = 8000;
 
   //Encoder Create.
   Enc = opus_encoder_create(sampling_rate, channels, application, &err);
@@ -189,28 +194,10 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM7_Init();
   MX_DFSDM1_Init();
+  MX_USART1_UART_Init();
+  MX_USART3_UART_Init();
 
   /* USER CODE BEGIN 2 */
-  //Enable SPI1.
-  __HAL_SPI_ENABLE(&hspi1);
-
-  //Enable Timer7.
-  HAL_TIM_Base_Start_IT(&htim7);
-
-  //Microphone
-  HAL_DFSDM_FilterRegularStart_DMA(&hdfsdm1_filter0,
-                                   &(Audio.Mic_Left_Channel_Buffer[0]),
-                                   Audio_Buffer_In_Size
-                                  );
-
-  HAL_DFSDM_FilterRegularStart_DMA(&hdfsdm1_filter1,
-                                   &(Audio.Mic_Right_Channel_Buffer[0]),
-                                   Audio_Buffer_In_Size
-                                  );
-
-  //I2S Transmit Start.
-  HAL_SAI_Transmit_DMA(&hsai_BlockA2, (uint8_t*)Audio.Audio_Buffer_Out, Audio_Buffer_Out_Size);
-
   /* Spirit1 Basic Mode Init */
   SPIRIT1_Basic_Init(&Spirit1,&Com);
   Test_Init();
@@ -218,21 +205,48 @@ int main(void)
   /* Matrix Keyboard Init */
   matrix_keyport_init(&matrix_key_data);
 
+  //enable all IRQ.
+  __enable_irq();
+
   /* STA350BW Init */
-  STA350BW_Init(&STA350BW_I2C_Drv,  //SOUNDTERMINAL_Object_t* pObj,
-                0x11,               //uint16_t                volume,
-                STA350BW_Fs_48000,  //uint32_t                samplingFreq,
-                NULL                //void*                   p
+  STA350BW_Init(&STA350BW_I2C_Drv,
+                0x11,
+                STA350BW_Fs_48000,
+                NULL
                );
 
-  /* Randam Numbers.
-  */
-  srand(HAL_GetTick());
+  //Enable Timer7.
+  HAL_TIM_Base_Start_IT(&htim7);
 
-  for(Count = 0; Count < Audio_Buffer_In_Size; Count ++)
-  {
-    Random_Data[Count] = (int16_t)((rand() % 32768) * sin(HAL_GetTick()));
-  }
+  //Microphone
+  /*
+  HAL_DFSDM_FilterRegularStart_DMA(&hdfsdm1_filter0,
+                                   &(Audio.Encode.Source_Buffer[0][0]),
+                                   Audio_Buffer_Sample_Point
+                                  );
+  */
+
+  ///**
+  HAL_DFSDM_FilterRegularStart_DMA(&hdfsdm1_filter1,
+                                   &(Audio.Encode.Source_Buffer[0]),
+                                   Audio_Buffer_Sample_Point
+                                  );
+  //**/
+
+  //USART1 Rx DMA Transmit Start.
+  HAL_UART_Receive_DMA(&huart1,
+                       (uint8_t*)&Audio.Decode.Receive_DMA_Buffer[0],
+                       Audio_Buffer_Max
+                      );
+/*
+  //USART3 Tx DMA Transmit Start.
+  HAL_UART_Transmit_DMA(&huart3,
+                        (uint8_t*)&Audio.Decode.Frame_Buffer[0],
+                        Audio_Buffer_Max
+                       );
+*/
+  //I2S Transmit Start.
+  HAL_SAI_Transmit_DMA(&hsai_BlockA2, (uint8_t*)Audio.Decode.Out_Buffer, Audio_Buffer_Out_Point);
 
   /* USER CODE END 2 */
 
@@ -241,7 +255,7 @@ int main(void)
   while (1)
   {
     /*Matrix Keyboard.*/
-    matrix_key_scan(&matrix_key_data);
+    ////matrix_key_scan(&matrix_key_data);
 
 #if Audio_Main_Loop == 1
 #if Audio_Direct == 0
@@ -259,119 +273,40 @@ int main(void)
       {
         Flag_DFSDM_Int[3] = 0;
 
-        /*Encode Audio.*/
-        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_SET);
-/*
-        Count = opus_encode(Enc,
-                            (opus_int16*)&Audio.Mic_Right_Channel_Buffer[0],
-                            Audio_Buffer_In_Size,
-                            (unsigned char*)Audio.Audio_Buffer_Out_Encode,
-                            Audio_Buffer_In_Size
-                           );
-*/
-
-        Count = opus_encode(Enc,
-                            (opus_int16*)Audio_Sin_Data,
-                            Audio_Buffer_In_Size,
-                            (unsigned char*)Audio.Audio_Buffer_Out_Encode,
-                            Audio_Buffer_In_Size
-                           );
-
-        //Add Tail.
-        *((uint8_t*)Audio.Audio_Buffer_Out_Encode + Count) = Audio_Tail[0]; Count++;
-        *((uint8_t*)Audio.Audio_Buffer_Out_Encode + Count) = Audio_Tail[1]; Count++;
-        *((uint8_t*)Audio.Audio_Buffer_Out_Encode + Count) = Audio_Tail[2]; Count++;
-        *((uint8_t*)Audio.Audio_Buffer_Out_Encode + Count) = Audio_Tail[3]; Count++;
-
-        //SPI DMA Transmiting.
-        Spirit_Tx(&Spirit1,
-                  (uint8_t)Count,
-                  (uint8_t*)Audio.Audio_Buffer_Out_Encode
-                 );
-
-        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_RESET);
+        //Encode Audio and Send out.
+        Audio_Encode_Send(&Audio);
       }
     }
 
-    /* If Key Record Release.
+    /* *******************************
+    ** If Key Record Release.
+    **********************************
     */
     else
     {
+#if 0
       /* Receive From Spirit */
-      Audio.Wireless.Receive_Len = Spirit_Rx(&Spirit1,
-                                             Audio.Wireless.Receive_Byte_Buffer
+      Audio.Decode.Receive_Len = Spirit_Rx(&Spirit1,
+                                             &Audio.Decode.Receive_Byte_Buffer[0]
                                             );
+#else
 
-      /* Copy Bytes into Frame Buffer */
-      Copy_Count = 0;
 
-      while(Copy_Count < Audio.Wireless.Receive_Len)
-      {
-        Audio.Wireless.Receive_Frame_Buffer[Audio.Wireless.Frame_Count ++] = Audio.Wireless.Receive_Byte_Buffer[Copy_Count ++];
-      }
 
-      /* Frame Tail Comparing */
-      for(Copy_Count = 0; Copy_Count < Audio.Wireless.Frame_Count; Copy_Count++)
-      {
-        if(Audio.Wireless.Receive_Frame_Buffer[Copy_Count] == Audio_Tail[Tail_Same_Count])
-        {
-          Tail_Same_Count ++;
-
-          //Tail Fitted.
-          if(Tail_Same_Count == Audio_Tail_Len)
-          {
-            //Get Frame Length.
-            Audio.Encode_Len = Copy_Count - Audio_Tail_Len + 1;
-            break;
-          }
-        }
-        else
-        {
-          Tail_Same_Count = 0;
-        }
-      }
-
-      /* Judge Audio Tail Fit times, and Copy Frame into Encode Buffer to Decompress */
-      if(Tail_Same_Count == Audio_Tail_Len)
-      {
-        Tail_Same_Count = 0;
-
-        //Copy Buffer into Frame.
-        for(Copy_Count = 0; Copy_Count < Audio.Encode_Len; Copy_Count ++)
-        {
-          Audio.Audio_Buffer_In_Encode[Copy_Count] = Audio.Wireless.Receive_Frame_Buffer[Copy_Count];
-        }
-
-        //Move Data in Receive Buffer to the first Byte.
-        Audio.Wireless.Frame_Count -= (Audio.Encode_Len + Audio_Tail_Len);
-
-        for(Copy_Count = 0; Copy_Count < Audio.Wireless.Frame_Count; Copy_Count ++)
-        {
-          Audio.Wireless.Receive_Frame_Buffer[Copy_Count] = Audio.Wireless.Receive_Frame_Buffer[Audio.Encode_Len + Audio_Tail_Len + Copy_Count];
-        }
-#if 1
-        /* Decode Audio and Out put */
-         Audio.Out_Len = opus_decode(Dec,
-                                     (const unsigned char*)Audio.Audio_Buffer_In_Encode,
-                                     Audio.Encode_Len,
-                                     Audio.Audio_Buffer_Out_1Ch,
-                                     Audio_Buffer_In_Size,
-                                     0
-                                    );
 #endif
-        /* Copy into 2 Channel I2S Buffer */
-        for(Copy_Count = 0; Copy_Count < Audio_Buffer_In_Size; Copy_Count ++)
-        {
-          Audio.Audio_Buffer_Out[Copy_Count * 2]     = Audio.Audio_Buffer_Out_1Ch[Copy_Count];
-          Audio.Audio_Buffer_Out[Copy_Count * 2 + 1] = Audio.Audio_Buffer_Out_1Ch[Copy_Count];
-        }
-      }
+
+      //Receive and Decode.
+      Audio_Receive_Decode(&Audio);
 
       //Resume Speaker DMA.
       //HAL_SAI_DMAResume(&hsai_BlockA2);
     }
 
-#else   //#if Audio_Direct #else
+/* #################################################
+*  #if Audio_Direct #else
+   #################################################
+*/
+#else
     //Filter0 Half interrupt.
     if(Flag_DFSDM_Int[0])
     {
@@ -464,13 +399,12 @@ void SystemClock_Config(void)
 
     /**Initializes the CPU, AHB and APB busses clocks
     */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
-  RCC_OscInitStruct.MSIState = RCC_MSI_ON;
-  RCC_OscInitStruct.MSICalibrationValue = 0;
-  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = 16;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
-  RCC_OscInitStruct.PLL.PLLM = 1;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = 4;
   RCC_OscInitStruct.PLL.PLLN = 40;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
@@ -494,13 +428,16 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_SAI2|RCC_PERIPHCLK_I2C1
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_USART3
+                              |RCC_PERIPHCLK_SAI2|RCC_PERIPHCLK_I2C1
                               |RCC_PERIPHCLK_DFSDM1;
+  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
+  PeriphClkInit.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
   PeriphClkInit.Sai2ClockSelection = RCC_SAI2CLKSOURCE_PLLSAI2;
   PeriphClkInit.Dfsdm1ClockSelection = RCC_DFSDM1CLKSOURCE_SYSCLK;
-  PeriphClkInit.PLLSAI2.PLLSAI2Source = RCC_PLLSOURCE_MSI;
-  PeriphClkInit.PLLSAI2.PLLSAI2M = 1;
+  PeriphClkInit.PLLSAI2.PLLSAI2Source = RCC_PLLSOURCE_HSI;
+  PeriphClkInit.PLLSAI2.PLLSAI2M = 4;
   PeriphClkInit.PLLSAI2.PLLSAI2N = 86;
   PeriphClkInit.PLLSAI2.PLLSAI2P = RCC_PLLP_DIV7;
   PeriphClkInit.PLLSAI2.PLLSAI2R = RCC_PLLR_DIV2;
@@ -727,6 +664,48 @@ static void MX_TIM7_Init(void)
 
 }
 
+/* USART1 init function */
+static void MX_USART1_UART_Init(void)
+{
+
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+}
+
+/* USART3 init function */
+static void MX_USART3_UART_Init(void)
+{
+
+  huart3.Instance = USART3;
+  huart3.Init.BaudRate = 115200;
+  huart3.Init.WordLength = UART_WORDLENGTH_8B;
+  huart3.Init.StopBits = UART_STOPBITS_1;
+  huart3.Init.Parity = UART_PARITY_NONE;
+  huart3.Init.Mode = UART_MODE_TX_RX;
+  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+}
+
 /**
   * Enable DMA controller clock
   */
@@ -749,9 +728,21 @@ static void MX_DMA_Init(void)
   /* DMA1_Channel5_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Channel5_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel5_IRQn);
+  /* DMA1_Channel6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel6_IRQn);
   /* DMA2_Channel3_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Channel3_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Channel3_IRQn);
+  /* DMA2_Channel4_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Channel4_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Channel4_IRQn);
+  /* DMA2_Channel6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Channel6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Channel6_IRQn);
+  /* DMA2_Channel7_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Channel7_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Channel7_IRQn);
 
 }
 
@@ -859,6 +850,78 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if(htim == &htim7)
   {
     matrix_key_data.flag_scan = true;
+  }
+}
+
+/* UART DMA Half-Completed CallBack.
+*/
+#if 0
+void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
+{
+  if(huart == &huart1)
+  {
+    memcpy(&Audio.Decode.Receive_Byte_Buffer[0],//void*dest,
+           &Audio.Decode.Receive_DMA_Buffer[0], //const void *src,
+           (Audio_Buffer_Max >> 1)              //size_t n
+          );
+
+/*
+    HAL_UART_Transmit_DMA(&huart3,
+                          (uint8_t*)&Audio.Decode.Frame_Buffer[0],
+                          (Audio_Buffer_Max >> 1)
+                         );
+*/
+/*
+    //Add Frame Count.
+    if(Audio.Decode.Frame_Count > Audio_Buffer_Max >> 1)
+    {
+      Audio.Decode.Frame_Count = 0;
+    }
+    else
+    {
+      Audio.Decode.Frame_Count += (Audio_Buffer_Max >> 1);
+    }
+*/
+  }
+}
+#endif
+
+/* UART DMA Completed CallBack.
+*/
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  if(huart == &huart1)
+  {
+#if 0
+    memcpy(&Audio.Decode.Receive_Byte_Buffer[Audio_Buffer_Max >> 1], //void*dest,
+           &Audio.Decode.Receive_DMA_Buffer[Audio_Buffer_Max >> 1],  //const void *src,
+           (Audio_Buffer_Max >> 1)                                   //size_t n
+          );
+#else
+    memcpy(&Audio.Decode.Receive_Byte_Buffer[0], //void*dest,
+           &Audio.Decode.Receive_DMA_Buffer[0],  //const void *src,
+           Audio_Buffer_Max                      //size_t n
+          );
+
+#endif
+
+/*
+    HAL_UART_Transmit_DMA(&huart3,
+                          (uint8_t*)&Audio.Decode.Frame_Buffer[(Audio_Buffer_Max >> 1)],
+                          (Audio_Buffer_Max >> 1)
+                         );
+*/
+/*
+    //Add Frame Count.
+    if(Audio.Decode.Frame_Count > Audio_Buffer_Max >> 1)
+    {
+      Audio.Decode.Frame_Count = 0;
+    }
+    else
+    {
+      Audio.Decode.Frame_Count += (Audio_Buffer_Max >> 1);
+    }
+*/
   }
 }
 
