@@ -44,7 +44,7 @@
 #include "matrix keyboard.h"
 #include "Audio.h"
 #include "test.h"
-
+#include "AudioSin.h"
 #include "opus.h"
 
 /* USER CODE END Includes */
@@ -261,13 +261,22 @@ int main(void)
 
         /*Encode Audio.*/
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_SET);
-
+/*
         Count = opus_encode(Enc,
                             (opus_int16*)&Audio.Mic_Right_Channel_Buffer[0],
                             Audio_Buffer_In_Size,
                             (unsigned char*)Audio.Audio_Buffer_Out_Encode,
                             Audio_Buffer_In_Size
                            );
+*/
+
+        Count = opus_encode(Enc,
+                            (opus_int16*)Audio_Sin_Data,
+                            Audio_Buffer_In_Size,
+                            (unsigned char*)Audio.Audio_Buffer_Out_Encode,
+                            Audio_Buffer_In_Size
+                           );
+
         //Add Tail.
         *((uint8_t*)Audio.Audio_Buffer_Out_Encode + Count) = Audio_Tail[0]; Count++;
         *((uint8_t*)Audio.Audio_Buffer_Out_Encode + Count) = Audio_Tail[1]; Count++;
@@ -356,18 +365,8 @@ int main(void)
           Audio.Audio_Buffer_Out[Copy_Count * 2]     = Audio.Audio_Buffer_Out_1Ch[Copy_Count];
           Audio.Audio_Buffer_Out[Copy_Count * 2 + 1] = Audio.Audio_Buffer_Out_1Ch[Copy_Count];
         }
-
       }
 
-/*
-                        (OpusDecoder *st,
-                         const unsigned char *data,
-                         opus_int32 len,
-                         opus_val16 *pcm,
-                         int frame_size,
-                         int decode_fec
-                        )
-*/
       //Resume Speaker DMA.
       //HAL_SAI_DMAResume(&hsai_BlockA2);
     }
