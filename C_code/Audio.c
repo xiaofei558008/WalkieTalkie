@@ -218,10 +218,12 @@ void Audio_Receive_Decode(Audio_EnDecode_TypeDef* Temp)
         /* Copy into 2 Channel I2S Buffer */
         if(Temp->Decode.Decode_Len == Audio_Buffer_Sample_Point)
         {
-          for(Temp->Decode.Scan_Count = 0; Temp->Decode.Scan_Count < Audio_Buffer_Sample_Point; Temp->Decode.Scan_Count ++)
+          uint8_t Temp_Copy;
+
+          for(Temp_Copy = 0; Temp_Copy < Audio_Buffer_Sample_Point; Temp_Copy ++)
           {
-            Temp->Decode.Out_Buffer[Temp->Decode.Scan_Count * 2]     = Temp->Decode.Decode_Buffer[Temp->Decode.Scan_Count];
-            Temp->Decode.Out_Buffer[Temp->Decode.Scan_Count * 2 + 1] = Temp->Decode.Decode_Buffer[Temp->Decode.Scan_Count];
+            Temp->Decode.Out_Buffer[Temp_Copy * 2]     = Temp->Decode.Decode_Buffer[Temp_Copy];
+            Temp->Decode.Out_Buffer[Temp_Copy * 2 + 1] = Temp->Decode.Decode_Buffer[Temp_Copy];
           }
         }
 #endif
@@ -264,17 +266,16 @@ void Audio_Receive_Decode(Audio_EnDecode_TypeDef* Temp)
 */
 void Audio_Direct_Loop(Audio_EnDecode_TypeDef* Temp)
 {
-#if 0
+  uint16_t Count;
+
   //Filter0 Half interrupt.
   if(Flag_DFSDM_Int[0])
   {
     Flag_DFSDM_Int[0] = 0;
 
-    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
-
-    for(Count = 0; Count < Audio_Buffer_In_Size / 2; Count++)
+    for(Count = 0; Count < Audio_Buffer_Sample_Point / 2; Count++)
     {
-      Temp->Audio_Buffer_Out[Count*2] = SaturaLH((Temp->Mic_Left_Channel_Buffer[Count] >> 8), -32768, 32767);
+      Temp->Decode.Out_Buffer[Count*2] = SaturaLH((Temp->Encode.Source_Buffer[Count] >> 8), -32768, 32767);
     }
   }
 
@@ -282,11 +283,10 @@ void Audio_Direct_Loop(Audio_EnDecode_TypeDef* Temp)
   if(Flag_DFSDM_Int[1])
   {
     Flag_DFSDM_Int[1] = 0;
-    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
 
-    for(Count = 0; Count < Audio_Buffer_In_Size / 2; Count++)
+    for(Count = 0; Count < Audio_Buffer_Sample_Point / 2; Count++)
     {
-      Temp->Audio_Buffer_Out[Count * 2 + 1] = SaturaLH((Temp->Mic_Right_Channel_Buffer[Count] >> 8), -32768, 32767);
+      Temp->Decode.Out_Buffer[Count * 2 + 1] = SaturaLH((Temp->Encode.Source_Buffer[Count] >> 8), -32768, 32767);
     }
   }
 
@@ -294,11 +294,10 @@ void Audio_Direct_Loop(Audio_EnDecode_TypeDef* Temp)
   if(Flag_DFSDM_Int[2])
   {
     Flag_DFSDM_Int[2] = 0;
-    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_11);
 
-    for(Count = Audio_Buffer_In_Size / 2; Count < Audio_Buffer_In_Size; Count++)
+    for(Count = Audio_Buffer_Sample_Point / 2; Count < Audio_Buffer_Sample_Point; Count++)
     {
-      Temp->Audio_Buffer_Out[Count * 2] = SaturaLH((Temp->Mic_Left_Channel_Buffer[Count] >> 8), -32768, 32767);
+      Temp->Decode.Out_Buffer[Count * 2] = SaturaLH((Temp->Encode.Source_Buffer[Count] >> 8), -32768, 32767);
     }
   }
 
@@ -306,14 +305,12 @@ void Audio_Direct_Loop(Audio_EnDecode_TypeDef* Temp)
   if(Flag_DFSDM_Int[3])
   {
     Flag_DFSDM_Int[3] = 0;
-    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
 
-    for(Count = Audio_Buffer_In_Size / 2; Count < Audio_Buffer_In_Size; Count++)
+    for(Count = Audio_Buffer_Sample_Point / 2; Count < Audio_Buffer_Sample_Point; Count++)
     {
-      Temp->Audio_Buffer_Out[Count * 2 + 1] = SaturaLH((Temp->Mic_Right_Channel_Buffer[Count] >> 8), -32768, 32767);
+      Temp->Decode.Out_Buffer[Count * 2 + 1] = SaturaLH((Temp->Encode.Source_Buffer[Count] >> 8), -32768, 32767);
     }
   }
-#endif
 }
 
 #if Audio_Main_Loop == 1
@@ -354,6 +351,7 @@ void HAL_DFSDM_FilterRegConvCpltCallback(DFSDM_Filter_HandleTypeDef *hdfsdm_filt
 }
 
 #else
+
 /*
 *  DFSDM DMA Half Complete CallBack.
 */
@@ -363,26 +361,26 @@ void HAL_DFSDM_FilterRegConvHalfCpltCallback(DFSDM_Filter_HandleTypeDef *hdfsdm_
 
   if(hdfsdm_filter == &hdfsdm1_filter0)
   {
-    for(Count = 0; Count < Audio_Buffer_In_Size / 2; Count++)
+    for(Count = 0; Count < Audio_Buffer_Sample_Point / 2; Count++)
     {
-      Temp->Audio_Buffer_Out[Count * 2] = SaturaLH((Temp->Mic_Left_Channel_Buffer[Count] >> 8), -32768, 32767);
+      Audio.Decode.Out_Buffer[Count * 2] = SaturaLH((Audio.Encode.Source_Buffer[Count] >> 8), -32768, 32767);
     }
   }
 
   if(hdfsdm_filter == &hdfsdm1_filter1)
   {
-    for(Count = 0; Count < Audio_Buffer_In_Size / 2; Count++)
+    for(Count = 0; Count < Audio_Buffer_Sample_Point / 2; Count++)
     {
-      Temp->Audio_Buffer_Out[Count * 2 + 1] = SaturaLH((Temp->Mic_Right_Channel_Buffer[Count] >> 8), -32768, 32767);
+      Audio.Decode.Out_Buffer[Count * 2 + 1] = SaturaLH((Audio.Encode.Source_Buffer[Count] >> 8), -32768, 32767);
     }
 
     //Start Transmiting.
-    //HAL_SAI_Transmit_DMA(&hsai_BlockA2, (uint8_t*)Temp->Audio_Buffer_Out, Audio_Buffer_In_Size);
+    //HAL_SAI_Transmit_DMA(&hsai_BlockA2, (uint8_t*)Audio.Decode.Out_Buffer, Audio_Buffer_Sample_Point);
   }
 }
 
 /*
-*  DFSDM DMA Complete CallBack.
+* DFSDM DMA Complete CallBack.
 */
 void HAL_DFSDM_FilterRegConvCpltCallback(DFSDM_Filter_HandleTypeDef *hdfsdm_filter)
 {
@@ -390,25 +388,24 @@ void HAL_DFSDM_FilterRegConvCpltCallback(DFSDM_Filter_HandleTypeDef *hdfsdm_filt
 
   if(hdfsdm_filter == &hdfsdm1_filter0)
   {
-    for(Count = Audio_Buffer_In_Size / 2; Count < Audio_Buffer_In_Size; Count++)
+    for(Count = Audio_Buffer_Sample_Point / 2; Count < Audio_Buffer_Sample_Point; Count++)
     {
-      Temp->Audio_Buffer_Out[Count * 2] = SaturaLH((Temp->Mic_Left_Channel_Buffer[Count] >> 8), -32768, 32767);
+      Audio.Decode.Out_Buffer[Count * 2] = SaturaLH((Audio.Encode.Source_Buffer[Count] >> 8), -32768, 32767);
     }
   }
 
   if(hdfsdm_filter == &hdfsdm1_filter1)
   {
-    for(Count = Audio_Buffer_In_Size / 2; Count < Audio_Buffer_In_Size; Count++)
+    for(Count = Audio_Buffer_Sample_Point / 2; Count < Audio_Buffer_Sample_Point; Count++)
     {
-      Temp->Audio_Buffer_Out[Count * 2 + 1] = SaturaLH((Temp->Mic_Right_Channel_Buffer[Count] >> 8), -32768, 32767);
+      Audio.Decode.Out_Buffer[Count * 2 + 1] = SaturaLH((Audio.Encode.Source_Buffer[Count] >> 8), -32768, 32767);
     }
 
     //Start Transmiting.
-    //HAL_SAI_Transmit_DMA(&hsai_BlockA2, (uint8_t*)Temp->Audio_Buffer_Out, Audio_Buffer_Out_Size);
-    //HAL_SAI_Transmit_DMA(&hsai_BlockA2, (uint8_t*)&Temp->Audio_Buffer_Out[Audio_Buffer_In_Size], Audio_Buffer_In_Size);
+    //HAL_SAI_Transmit_DMA(&hsai_BlockA2, (uint8_t*)Audio.Decode.Out_Buffer, Decode.Out_Buffer_Size);
+    //HAL_SAI_Transmit_DMA(&hsai_BlockA2, (uint8_t*)&Audio.Decode.Out_Buffer[Audio_Buffer_Sample_Point], Audio_Buffer_Sample_Point);
   }
 }
-
 #endif
 
 uint8_t  Temp;
@@ -420,10 +417,10 @@ void HAL_SAI_TxHalfCpltCallback(SAI_HandleTypeDef *hsai)
   if(hsai == &hsai_BlockA2)
   {
 #if 0
-    for(Temp = 0; Temp < Audio_Buffer_In_Size / 2; Temp++)
+    for(Temp = 0; Temp < Audio_Buffer_Sample_Point / 2; Temp++)
     {
-      Temp->Audio_Buffer_Out[Temp * 2]     = Fragment1[Temp1];
-      Temp->Audio_Buffer_Out[Temp * 2 + 1] = Fragment1[Temp1];
+      Temp->Decode.Out_Buffer[Temp * 2]     = Fragment1[Temp1];
+      Temp->Decode.Out_Buffer[Temp * 2 + 1] = Fragment1[Temp1];
 
       Temp1 = (Temp1 + 1) % 14678;
     }
@@ -437,10 +434,10 @@ void HAL_SAI_TxCpltCallback(SAI_HandleTypeDef *hsai)
   if(hsai == &hsai_BlockA2)
   {
 #if 0
-    for(Temp = Audio_Buffer_In_Size / 2; Temp < Audio_Buffer_In_Size; Temp++)
+    for(Temp = Audio_Buffer_Sample_Point / 2; Temp < Audio_Buffer_Sample_Point; Temp++)
     {
-      Temp->Audio_Buffer_Out[Temp * 2]     = Fragment1[Temp1];
-      Temp->Audio_Buffer_Out[Temp * 2 + 1] = Fragment1[Temp1];
+      Temp->Decode.Out_Buffer[Temp * 2]     = Fragment1[Temp1];
+      Temp->Decode.Out_Buffer[Temp * 2 + 1] = Fragment1[Temp1];
 
       Temp1 = (Temp1 + 1) % 14678;
     }

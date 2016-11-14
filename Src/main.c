@@ -233,7 +233,6 @@ int main(void)
                                    Audio_Buffer_Sample_Point
                                   );
   */
-
   ///**
   HAL_DFSDM_FilterRegularStart_DMA(&hdfsdm1_filter1,
                                    &(Audio.Encode.Source_Buffer[0]),
@@ -258,8 +257,6 @@ int main(void)
   {
     /*Matrix Keyboard.*/
     ////matrix_key_scan(&matrix_key_data);
-
-#if Audio_Main_Loop == 1
 #if Audio_Direct == 0
 
     /* If Key Record Press Down.
@@ -304,11 +301,10 @@ int main(void)
 *  #if Audio_Direct #else
    #################################################
 */
-#elif 0
+#else
     Audio_Direct_Loop(&Audio);
 
 #endif  //end of #if Audio_Direct
-#endif  //end of #if Audio_Main_Loop
 
     //Communication Loop
     //Com_Main_Loop(&Com);
@@ -459,7 +455,7 @@ static void MX_DFSDM1_Init(void)
   hdfsdm1_channel6.Init.Awd.FilterOrder = DFSDM_CHANNEL_SINC1_ORDER;
   hdfsdm1_channel6.Init.Awd.Oversampling = 10;
   hdfsdm1_channel6.Init.Offset = 0;
-  hdfsdm1_channel6.Init.RightBitShift = 0;
+  hdfsdm1_channel6.Init.RightBitShift = 8;
   if (HAL_DFSDM_ChannelInit(&hdfsdm1_channel6) != HAL_OK)
   {
     Error_Handler();
@@ -477,7 +473,7 @@ static void MX_DFSDM1_Init(void)
   hdfsdm1_channel7.Init.Awd.FilterOrder = DFSDM_CHANNEL_SINC1_ORDER;
   hdfsdm1_channel7.Init.Awd.Oversampling = 10;
   hdfsdm1_channel7.Init.Offset = 0;
-  hdfsdm1_channel7.Init.RightBitShift = 0;
+  hdfsdm1_channel7.Init.RightBitShift = 8;
   if (HAL_DFSDM_ChannelInit(&hdfsdm1_channel7) != HAL_OK)
   {
     Error_Handler();
