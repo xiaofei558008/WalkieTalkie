@@ -10,6 +10,8 @@ All rights reserved,if the code is not authorized by STMicroelectronics.
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <string.h>
+
 #include "stm32l4xx_hal.h"
 #include "def32.h"
 

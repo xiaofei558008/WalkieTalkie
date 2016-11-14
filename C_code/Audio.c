@@ -53,10 +53,10 @@ void Audio_Init(Audio_EnDecode_TypeDef* Temp)
         );
 
   //Set Tail.
-  Temp->Decode.Tail[0] = 0x55;
-  Temp->Decode.Tail[1] = 0xaa;
-  Temp->Decode.Tail[2] = 0x55;
-  Temp->Decode.Tail[3] = 0xaa;
+  Temp->Tail[0] = 0x55;
+  Temp->Tail[1] = 0xaa;
+  Temp->Tail[2] = 0x55;
+  Temp->Tail[3] = 0xaa;
 }
 
 /******************************
@@ -83,10 +83,10 @@ void Audio_Encode_Send(Audio_EnDecode_TypeDef* Temp)
                                            );
   #endif
   //Add Tail.
-  *((uint8_t*)&Temp->Encode.Encode_Out_Buffer[0] + (Temp->Encode.Encode_Out_Len++)) = Temp->Decode.Tail[0];
-  *((uint8_t*)&Temp->Encode.Encode_Out_Buffer[0] + (Temp->Encode.Encode_Out_Len++)) = Temp->Decode.Tail[1];
-  *((uint8_t*)&Temp->Encode.Encode_Out_Buffer[0] + (Temp->Encode.Encode_Out_Len++)) = Temp->Decode.Tail[2];
-  *((uint8_t*)&Temp->Encode.Encode_Out_Buffer[0] + (Temp->Encode.Encode_Out_Len++)) = Temp->Decode.Tail[3];
+  *((uint8_t*)&Temp->Encode.Encode_Out_Buffer[0] + (Temp->Encode.Encode_Out_Len++)) = Temp->Tail[0];
+  *((uint8_t*)&Temp->Encode.Encode_Out_Buffer[0] + (Temp->Encode.Encode_Out_Len++)) = Temp->Tail[1];
+  *((uint8_t*)&Temp->Encode.Encode_Out_Buffer[0] + (Temp->Encode.Encode_Out_Len++)) = Temp->Tail[2];
+  *((uint8_t*)&Temp->Encode.Encode_Out_Buffer[0] + (Temp->Encode.Encode_Out_Len++)) = Temp->Tail[3];
 
   //Add Zeros.
   memset(&Temp->Encode.Encode_Out_Buffer[Temp->Encode.Encode_Out_Len],      //void *s,
@@ -120,18 +120,18 @@ void Audio_Receive_Decode(Audio_EnDecode_TypeDef* Temp)
   {
 #if 1
     //Tail Comparing.
-    if(Temp->Decode.Receive_Byte_Buffer[Temp->Scan_Count] == Temp->Decode.Tail[Temp->Decode.Tail_Count])
+    if(Temp->Decode.Receive_Byte_Buffer[Temp->Decode.Scan_Count] == Temp->Tail[Temp->Tail_Count])
     {
-      Temp->Decode.Tail_Count ++;
+      Temp->Tail_Count ++;
 
       //Tail Fitted.
-      if(Temp->Decode.Tail_Count == Audio_Tail_Len)
+      if(Temp->Tail_Count == Audio_Tail_Len)
       {
         //Buffer not overflow.
         if(Temp->Decode.Overflow_Flag == false)
         {
           //Get Frame Length. Audio_Buffer_Max
-          Temp->Decode.Encode_Byte_Len  = Temp->Scan_Count + 1 - Temp->Decode.Decode_Start_Num;
+          Temp->Decode.Encode_Byte_Len  = Temp->Decode.Scan_Count + 1 - Temp->Decode.Decode_Start_Num;
           Temp->Decode.Encode_Byte_Len -= Audio_Tail_Len;
 
           //Copy into Frame Buffer.
@@ -154,52 +154,58 @@ void Audio_Receive_Decode(Audio_EnDecode_TypeDef* Temp)
           Temp->Decode.Encode_Byte_Len  = Audio_Buffer_Max - Temp->Decode.Decode_Start_Num;
 
           //Copy into Frame Buffer.
-          memcpy(&Temp->Decode.Frame_Buffer[0],                           //void*dest,
-                 &Temp->Decode.Receive_Byte_Buffer[Temp->Decode.Decode_Start_Num], //const void *src,
-                 Temp->Decode.Encode_Byte_Len                                         //size_t n
+          memcpy(&Temp->Decode.Frame_Buffer[0],                                     //void*dest,
+                 &Temp->Decode.Receive_Byte_Buffer[Temp->Decode.Decode_Start_Num],  //const void *src,
+                 Temp->Decode.Encode_Byte_Len                                       //size_t n
                 );
 
           //Clear Buffer.
-          memset(&Temp->Decode.Receive_Byte_Buffer[Temp->Decode.Decode_Start_Num], //void *s,
+          memset(&Temp->Decode.Receive_Byte_Buffer[Temp->Decode.Decode_Start_Num],  //void *s,
                  0,                                                                 //int ch,
-                 sizeof(uint8_t) * Temp->Decode.Encode_Byte_Len                       //size_t n
+                 sizeof(uint8_t) * Temp->Decode.Encode_Byte_Len                     //size_t n
                 );
 
           //Copy into Frame Buffer.
-          memcpy(&Temp->Decode.Frame_Buffer[Temp->Decode.Encode_Byte_Len],  //void*dest,
-                 &Temp->Decode.Receive_Byte_Buffer[0],                            //const void *src,
-                 Temp->Scan_Count + 1                                               //size_t n
+          memcpy(&Temp->Decode.Frame_Buffer[Temp->Decode.Encode_Byte_Len],          //void*dest,
+                 &Temp->Decode.Receive_Byte_Buffer[0],                              //const void *src,
+                 Temp->Decode.Scan_Count + 1                                        //size_t n
                 );
 
           //Clear Buffer.
-          memset(&Temp->Decode.Receive_Byte_Buffer[0],                            //void *s,
+          memset(&Temp->Decode.Receive_Byte_Buffer[0],                              //void *s,
                  0,                                                                 //int ch,
-                 sizeof(uint8_t) * Temp->Scan_Count + 1                             //size_t n
+                 sizeof(uint8_t) * Temp->Decode.Scan_Count + 1                      //size_t n
                 );
 
           //Get Frame Length(overflow).
-          Temp->Decode.Encode_Byte_Len += (Temp->Scan_Count + 1);
+          Temp->Decode.Encode_Byte_Len += (Temp->Decode.Scan_Count + 1);
           Temp->Decode.Encode_Byte_Len -= Audio_Tail_Len;
         }
 
         //Clear Head-Flag & Overflow-Flag.
         Temp->Decode.Head_Flag       = false;
         Temp->Decode.Overflow_Flag   = false;
-        Temp->Decode.Tail_Count      = 0;
+        Temp->Tail_Count             = 0;
 
         /******************************
         *  Decode the Encode bytes.
         */
-#if 1
         /*TEST*/
         HAL_UART_Transmit_DMA(&huart3,
-                            (uint8_t*)&Temp->Decode.Frame_Buffer[0],
-                            Temp->Decode.Encode_Byte_Len
-                           );
+                              (uint8_t*)&Temp->Decode.Frame_Buffer[0],
+                              Temp->Decode.Encode_Byte_Len
+                             );
         /*TEST*/
 
-#else
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
+
+
         /* Decode Audio and Out put */
+        if(Temp->Decode.Encode_Byte_Len > 15)
+        {
+          Temp->Decode.Encode_Byte_Len = 6;
+        }
+
         Temp->Decode.Decode_Len = opus_decode(Dec,
                                              (const unsigned char*)&Temp->Decode.Frame_Buffer[0],
                                              Temp->Decode.Encode_Byte_Len,
@@ -207,45 +213,44 @@ void Audio_Receive_Decode(Audio_EnDecode_TypeDef* Temp)
                                              Audio_Buffer_Sample_Point,
                                              0
                                             );
-#endif
-
-#if 0
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_RESET);
+#if 1
         /* Copy into 2 Channel I2S Buffer */
         if(Temp->Decode.Decode_Len == Audio_Buffer_Sample_Point)
         {
-        for(Temp->Scan_Count = 0; Temp->Scan_Count < Temp->Decode.Decode_Len; Temp->Scan_Count ++)
-        {
-          Temp->Decode.Out_Buffer[Temp->Scan_Count * 2]     = Temp->Decode.Decode_Buffer[Temp->Scan_Count];
-          Temp->Decode.Out_Buffer[Temp->Scan_Count * 2 + 1] = Temp->Decode.Decode_Buffer[Temp->Scan_Count];
-        }
+          for(Temp->Decode.Scan_Count = 0; Temp->Decode.Scan_Count < Audio_Buffer_Sample_Point; Temp->Decode.Scan_Count ++)
+          {
+            Temp->Decode.Out_Buffer[Temp->Decode.Scan_Count * 2]     = Temp->Decode.Decode_Buffer[Temp->Decode.Scan_Count];
+            Temp->Decode.Out_Buffer[Temp->Decode.Scan_Count * 2 + 1] = Temp->Decode.Decode_Buffer[Temp->Decode.Scan_Count];
+          }
         }
 #endif
       }
     }
     else
     {
-      Temp->Decode.Tail_Count = 0;
+      Temp->Tail_Count = 0;
     }
 #endif
   }
 
   //First byte = 0x88 or not.
-  else if(Temp->Decode.Receive_Byte_Buffer[Temp->Scan_Count] == 0x88)
+  else if(Temp->Decode.Receive_Byte_Buffer[Temp->Decode.Scan_Count] == 0x88)
   {
     //Set Flag True.
     Temp->Decode.Head_Flag = true;
 
     //Stored Count Number.
-    Temp->Decode.Decode_Start_Num = Temp->Scan_Count;
+    Temp->Decode.Decode_Start_Num = Temp->Decode.Scan_Count;
 
   }
 
   //Add Scan Count.
-  Temp->Scan_Count ++;
+  Temp->Decode.Scan_Count ++;
 
-  if(Temp->Scan_Count >= Audio_Buffer_Max)
+  if(Temp->Decode.Scan_Count >= Audio_Buffer_Max)
   {
-    Temp->Scan_Count -= Audio_Buffer_Max;
+    Temp->Decode.Scan_Count -= Audio_Buffer_Max;
 
     //Judge Overflow.
     if(Temp->Decode.Head_Flag == true)
@@ -253,6 +258,62 @@ void Audio_Receive_Decode(Audio_EnDecode_TypeDef* Temp)
       Temp->Decode.Overflow_Flag = true;
     }
   }
+}
+
+/* Audio from Microphone to Speaker Directly.
+*/
+void Audio_Direct_Loop(Audio_EnDecode_TypeDef* Temp)
+{
+#if 0
+  //Filter0 Half interrupt.
+  if(Flag_DFSDM_Int[0])
+  {
+    Flag_DFSDM_Int[0] = 0;
+
+    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
+
+    for(Count = 0; Count < Audio_Buffer_In_Size / 2; Count++)
+    {
+      Temp->Audio_Buffer_Out[Count*2] = SaturaLH((Temp->Mic_Left_Channel_Buffer[Count] >> 8), -32768, 32767);
+    }
+  }
+
+  //Filter1 Half interrupt.
+  if(Flag_DFSDM_Int[1])
+  {
+    Flag_DFSDM_Int[1] = 0;
+    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
+
+    for(Count = 0; Count < Audio_Buffer_In_Size / 2; Count++)
+    {
+      Temp->Audio_Buffer_Out[Count * 2 + 1] = SaturaLH((Temp->Mic_Right_Channel_Buffer[Count] >> 8), -32768, 32767);
+    }
+  }
+
+  //Filter0 complete interrupt.
+  if(Flag_DFSDM_Int[2])
+  {
+    Flag_DFSDM_Int[2] = 0;
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_11);
+
+    for(Count = Audio_Buffer_In_Size / 2; Count < Audio_Buffer_In_Size; Count++)
+    {
+      Temp->Audio_Buffer_Out[Count * 2] = SaturaLH((Temp->Mic_Left_Channel_Buffer[Count] >> 8), -32768, 32767);
+    }
+  }
+
+  //Filter1 complete interrupt.
+  if(Flag_DFSDM_Int[3])
+  {
+    Flag_DFSDM_Int[3] = 0;
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
+
+    for(Count = Audio_Buffer_In_Size / 2; Count < Audio_Buffer_In_Size; Count++)
+    {
+      Temp->Audio_Buffer_Out[Count * 2 + 1] = SaturaLH((Temp->Mic_Right_Channel_Buffer[Count] >> 8), -32768, 32767);
+    }
+  }
+#endif
 }
 
 #if Audio_Main_Loop == 1

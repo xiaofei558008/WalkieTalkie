@@ -10,6 +10,16 @@ All rights reserved,if the code is not authorized by STMicroelectronics.
 uint8_t Send_Byte_Buffer[96],
         Receive_Byte_Buffer[96];
 
+uint8_t  Test0,
+         Test1;
+
+uint16_t Test2,
+         Test3,
+         Test4;
+
+uint32_t Test5,
+         Test6;
+
 /* Buffer Init.
 */
 void Test_Init(void)

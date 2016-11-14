@@ -14,6 +14,13 @@ Com_Protocol_TypeDef Com;
 */
 void Com_Init(Com_Protocol_TypeDef* Temp)
 {
+  //Clear Com Struct.
+  memset(Temp,                          //void *s,
+         0,                             //int ch,
+         sizeof(Com_Protocol_TypeDef)   //size_t n
+        );
+
+  //Init Com.
   Temp->Com_State      = Com_STA_Test_Rec_Write_Simu;
   Temp->Host_Addr.all  = 0x0101;
   Temp->TimeOut_Count  = 0;

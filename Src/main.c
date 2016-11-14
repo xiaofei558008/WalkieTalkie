@@ -66,8 +66,10 @@ SPI_HandleTypeDef hspi1;
 DMA_HandleTypeDef hdma_spi1_rx;
 DMA_HandleTypeDef hdma_spi1_tx;
 
+TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim6;
 TIM_HandleTypeDef htim7;
+TIM_HandleTypeDef htim8;
 
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart3;
@@ -94,6 +96,8 @@ static void MX_TIM7_Init(void);
 static void MX_DFSDM1_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART3_UART_Init(void);
+static void MX_TIM2_Init(void);
+static void MX_TIM8_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -196,6 +200,8 @@ int main(void)
   MX_DFSDM1_Init();
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
+  MX_TIM2_Init();
+  MX_TIM8_Init();
 
   /* USER CODE BEGIN 2 */
   /* Spirit1 Basic Mode Init */
@@ -215,8 +221,10 @@ int main(void)
                 NULL
                );
 
-  //Enable Timer7.
+
+  //Enable Timers.
   HAL_TIM_Base_Start_IT(&htim7);
+  HAL_TIM_Base_Start_IT(&htim8);
 
   //Microphone
   /*
@@ -238,13 +246,7 @@ int main(void)
                        (uint8_t*)&Audio.Decode.Receive_DMA_Buffer[0],
                        Audio_Buffer_Max
                       );
-/*
-  //USART3 Tx DMA Transmit Start.
-  HAL_UART_Transmit_DMA(&huart3,
-                        (uint8_t*)&Audio.Decode.Frame_Buffer[0],
-                        Audio_Buffer_Max
-                       );
-*/
+
   //I2S Transmit Start.
   HAL_SAI_Transmit_DMA(&hsai_BlockA2, (uint8_t*)Audio.Decode.Out_Buffer, Audio_Buffer_Out_Point);
 
@@ -287,12 +289,8 @@ int main(void)
 #if 0
       /* Receive From Spirit */
       Audio.Decode.Receive_Len = Spirit_Rx(&Spirit1,
-                                             &Audio.Decode.Receive_Byte_Buffer[0]
-                                            );
-#else
-
-
-
+                                           &Audio.Decode.Receive_Byte_Buffer[0]
+                                          );
 #endif
 
       //Receive and Decode.
@@ -306,58 +304,13 @@ int main(void)
 *  #if Audio_Direct #else
    #################################################
 */
-#else
-    //Filter0 Half interrupt.
-    if(Flag_DFSDM_Int[0])
-    {
-      Flag_DFSDM_Int[0] = 0;
+#elif 0
+    Audio_Direct_Loop(&Audio);
 
-      HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
-
-      for(Count = 0; Count < Audio_Buffer_In_Size / 2; Count++)
-      {
-        Audio.Audio_Buffer_Out[Count*2] = SaturaLH((Audio.Mic_Left_Channel_Buffer[Count] >> 8), -32768, 32767);
-      }
-    }
-
-    //Filter1 Half interrupt.
-    if(Flag_DFSDM_Int[1])
-    {
-      Flag_DFSDM_Int[1] = 0;
-      HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
-
-      for(Count = 0; Count < Audio_Buffer_In_Size / 2; Count++)
-      {
-        Audio.Audio_Buffer_Out[Count * 2 + 1] = SaturaLH((Audio.Mic_Right_Channel_Buffer[Count] >> 8), -32768, 32767);
-      }
-    }
-
-    //Filter0 complete interrupt.
-    if(Flag_DFSDM_Int[2])
-    {
-      Flag_DFSDM_Int[2] = 0;
-      HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_11);
-
-      for(Count = Audio_Buffer_In_Size / 2; Count < Audio_Buffer_In_Size; Count++)
-      {
-        Audio.Audio_Buffer_Out[Count * 2] = SaturaLH((Audio.Mic_Left_Channel_Buffer[Count] >> 8), -32768, 32767);
-      }
-    }
-
-    //Filter1 complete interrupt.
-    if(Flag_DFSDM_Int[3])
-    {
-      Flag_DFSDM_Int[3] = 0;
-      HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_12);
-
-      for(Count = Audio_Buffer_In_Size / 2; Count < Audio_Buffer_In_Size; Count++)
-      {
-        Audio.Audio_Buffer_Out[Count * 2 + 1] = SaturaLH((Audio.Mic_Right_Channel_Buffer[Count] >> 8), -32768, 32767);
-      }
-    }
 #endif  //end of #if Audio_Direct
 #endif  //end of #if Audio_Main_Loop
 
+    //Communication Loop
     //Com_Main_Loop(&Com);
 
     //RX
@@ -616,6 +569,38 @@ static void MX_SPI1_Init(void)
 
 }
 
+/* TIM2 init function */
+static void MX_TIM2_Init(void)
+{
+
+  TIM_ClockConfigTypeDef sClockSourceConfig;
+  TIM_MasterConfigTypeDef sMasterConfig;
+
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 0;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 79999;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+}
+
 /* TIM6 init function */
 static void MX_TIM6_Init(void)
 {
@@ -649,7 +634,7 @@ static void MX_TIM7_Init(void)
   htim7.Instance = TIM7;
   htim7.Init.Prescaler = 79;
   htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim7.Init.Period = 10000;
+  htim7.Init.Period = 9999;
   if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
   {
     Error_Handler();
@@ -658,6 +643,40 @@ static void MX_TIM7_Init(void)
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim7, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+}
+
+/* TIM8 init function */
+static void MX_TIM8_Init(void)
+{
+
+  TIM_ClockConfigTypeDef sClockSourceConfig;
+  TIM_MasterConfigTypeDef sMasterConfig;
+
+  htim8.Instance = TIM8;
+  htim8.Init.Prescaler = 79;
+  htim8.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim8.Init.Period = 999;
+  htim8.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim8.Init.RepetitionCounter = 0;
+  if (HAL_TIM_Base_Init(&htim8) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim8, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterOutputTrigger2 = TIM_TRGO2_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim8, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
   }
@@ -851,6 +870,24 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   {
     matrix_key_data.flag_scan = true;
   }
+
+  //Timer8 Period Interrupt.
+  if(htim == &htim8)
+  {
+    Audio.Gap_Count ++;
+
+    if(Audio.Gap_Count >= 2)
+    {
+      Audio.Gap_Count = 0;
+
+      //USART1 Rx DMA Transmit Start.
+      HAL_UART_Receive_DMA(&huart1,
+                           (uint8_t*)&Audio.Decode.Receive_DMA_Buffer[0],
+                           Audio_Buffer_Max
+                          );
+    }
+
+  }
 }
 
 /* UART DMA Half-Completed CallBack.
@@ -892,6 +929,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
   if(huart == &huart1)
   {
+    //Clear Frame Gap Count.
+    Audio.Gap_Count = 0;
+
 #if 0
     memcpy(&Audio.Decode.Receive_Byte_Buffer[Audio_Buffer_Max >> 1], //void*dest,
            &Audio.Decode.Receive_DMA_Buffer[Audio_Buffer_Max >> 1],  //const void *src,

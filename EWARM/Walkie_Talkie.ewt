@@ -1607,9 +1607,6 @@
         </group>
       </group>
       <group>
-        <name>Speex</name>
-      </group>
-      <group>
         <name>SPIRIT1</name>
         <file>
           <name>$PROJ_DIR$\..\C_code\spirit1\SPIRIT1.c</name>
@@ -1764,6 +1761,12 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_tim_ex.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_uart.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_uart_ex.c</name>
       </file>
     </group>
   </group>

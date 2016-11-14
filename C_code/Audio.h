@@ -53,6 +53,7 @@ typedef struct
 {
   bool     Head_Flag;
   bool     Overflow_Flag;
+  uint8_t  Scan_Count;
 
   uint8_t  Decode_Start_Num;
   uint16_t Encode_Byte_Len;
@@ -60,9 +61,6 @@ typedef struct
   uint8_t  Receive_DMA_Buffer[Audio_Buffer_Max];
   uint8_t  Receive_Byte_Buffer[Audio_Buffer_Max];
   uint8_t  Frame_Buffer[Audio_Buffer_Max];
-
-  uint8_t  Tail_Count;
-  uint8_t  Tail[Audio_Tail_Len];
 
   int16_t  Decode_Buffer[Audio_Buffer_Sample_Point];
   uint16_t Decode_Len;
@@ -72,9 +70,11 @@ typedef struct
 
 typedef struct
 {
-  uint8_t              Scan_Count;
-  Audio_Encode_TypeDef Encode;
-  Audio_Decode_TypeDef Decode;
+  uint8_t               Gap_Count;
+  uint8_t               Tail_Count;
+  uint8_t               Tail[Audio_Tail_Len];
+  Audio_Encode_TypeDef  Encode;
+  Audio_Decode_TypeDef  Decode;
 }Audio_EnDecode_TypeDef;
 
 /*Global declare.
@@ -85,6 +85,7 @@ extern const int16_t Fragment1[];
 void Audio_Init(Audio_EnDecode_TypeDef* Temp);
 void Audio_Encode_Send(Audio_EnDecode_TypeDef* Temp);
 void Audio_Receive_Decode(Audio_EnDecode_TypeDef* Temp);
+void Audio_Direct_Loop(Audio_EnDecode_TypeDef* Temp);
 
 #endif
 

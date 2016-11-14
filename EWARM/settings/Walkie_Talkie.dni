@@ -1,10 +1,10 @@
 [StLinkDriver]
 stlinkserialNo=67072758
-stlinkfoundProbes=
+stlinkfoundProbes=67072758:67104247:
 CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
 [DebugChecksum]
-Checksum=2047519812
+Checksum=371072935
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -43,7 +43,9 @@ ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
 [struct_types]
 Fmt0=OpusEncoder-celt_enc_offset	4	0
-Fmt1=struct <Unnamed 20>-Encode_Out_Len	3	0
+Fmt1=struct <Unnamed 21>-Decode_Start_Num	3	0
+Fmt2=struct <Unnamed 21>-Scan_Count	3	0
+Fmt3=struct <Unnamed 21>-Tail_Count	3	0
 [array_types]
 Fmt0=int16_t[240]	3	0
 Fmt1=int32_t[240]	3	0
@@ -100,6 +102,14 @@ ShowTimeLog=1
 SumEnabled=0
 ShowTimeSum=1
 SumSortOrder=0
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Audio.c}.334.5" 0 0 1 "" 0 "" 0
+Bp1=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Audio.c}.334.5" 0 0 1 "" 0 "" 0
+Bp2=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Audio.c}.334.5" 0 0 1 "" 0 "" 0
+Bp3=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\spirit1\SPIRIT1.c}.174.3" 0 0 1 "" 0 "" 0
+Count=4
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -107,6 +117,9 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
+[Aliases]
+Count=0
+SuppressDialog=0
 [DriverProfiling]
 Enabled=0
 Mode=3
@@ -117,14 +130,3 @@ Exclusions=
 Enabled=0
 [CallStackStripe]
 ShowTiming=1
-[Disassemble mode]
-mode=0
-[Breakpoints2]
-Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Audio.c}.264.3" 0 0 1 "" 0 "" 0
-Bp1=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Audio.c}.264.3" 0 0 1 "" 0 "" 0
-Bp2=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\Audio.c}.264.3" 0 0 1 "" 0 "" 0
-Bp3=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\C_code\spirit1\SPIRIT1.c}.174.3" 0 0 1 "" 0 "" 0
-Count=4
-[Aliases]
-Count=0
-SuppressDialog=0

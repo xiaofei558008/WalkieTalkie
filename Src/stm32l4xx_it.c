@@ -45,8 +45,10 @@ extern DMA_HandleTypeDef hdma_dfsdm1_flt1;
 extern DMA_HandleTypeDef hdma_sai2_a;
 extern DMA_HandleTypeDef hdma_spi1_rx;
 extern DMA_HandleTypeDef hdma_spi1_tx;
+extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim6;
 extern TIM_HandleTypeDef htim7;
+extern TIM_HandleTypeDef htim8;
 extern DMA_HandleTypeDef hdma_usart1_rx;
 extern DMA_HandleTypeDef hdma_usart1_tx;
 extern DMA_HandleTypeDef hdma_usart3_rx;
@@ -267,6 +269,20 @@ void DMA1_Channel6_IRQHandler(void)
 }
 
 /**
+* @brief This function handles TIM2 global interrupt.
+*/
+void TIM2_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM2_IRQn 0 */
+
+  /* USER CODE END TIM2_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim2);
+  /* USER CODE BEGIN TIM2_IRQn 1 */
+
+  /* USER CODE END TIM2_IRQn 1 */
+}
+
+/**
 * @brief This function handles USART1 global interrupt.
 */
 void USART1_IRQHandler(void)
@@ -292,6 +308,20 @@ void USART3_IRQHandler(void)
   /* USER CODE BEGIN USART3_IRQn 1 */
 
   /* USER CODE END USART3_IRQn 1 */
+}
+
+/**
+* @brief This function handles TIM8 update interrupt.
+*/
+void TIM8_UP_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM8_UP_IRQn 0 */
+
+  /* USER CODE END TIM8_UP_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim8);
+  /* USER CODE BEGIN TIM8_UP_IRQn 1 */
+
+  /* USER CODE END TIM8_UP_IRQn 1 */
 }
 
 /**
