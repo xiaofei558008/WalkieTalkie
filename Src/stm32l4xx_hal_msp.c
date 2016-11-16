@@ -768,6 +768,10 @@ void HAL_SAI_MspInit(SAI_HandleTypeDef* hsai)
     if (SAI2_client == 0)
     {
        __HAL_RCC_SAI2_CLK_ENABLE();
+
+    /* Peripheral interrupt init*/
+    HAL_NVIC_SetPriority(SAI2_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(SAI2_IRQn);
     }
     SAI2_client ++;
     
@@ -827,6 +831,7 @@ void HAL_SAI_MspDeInit(SAI_HandleTypeDef* hsai)
       {
       /* Peripheral clock disable */ 
        __HAL_RCC_SAI2_CLK_DISABLE();
+      HAL_NVIC_DisableIRQ(SAI2_IRQn);
       }
     
     /**SAI2_A_Block_A GPIO Configuration    

@@ -41,59 +41,59 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define Spirit1_GPIO0_Pin GPIO_PIN_1
-#define Spirit1_GPIO0_GPIO_Port GPIOC
-#define STA350BW_PWRDN_Pin GPIO_PIN_0
-#define STA350BW_PWRDN_GPIO_Port GPIOA
-#define Spirit1_GPIO2_Pin GPIO_PIN_4
-#define Spirit1_GPIO2_GPIO_Port GPIOA
-#define Spirit1_GPIO1_Pin GPIO_PIN_0
-#define Spirit1_GPIO1_GPIO_Port GPIOB
-#define STA350BW_LRCKI_Pin GPIO_PIN_12
-#define STA350BW_LRCKI_GPIO_Port GPIOB
-#define STA350BW_BICKI_Pin GPIO_PIN_13
-#define STA350BW_BICKI_GPIO_Port GPIOB
-#define STA350BW_SDI1_Pin GPIO_PIN_15
-#define STA350BW_SDI1_GPIO_Port GPIOB
-#define STA350BW_MCLK_Pin GPIO_PIN_6
-#define STA350BW_MCLK_GPIO_Port GPIOC
-#define Spirit1_GPIO3_Pin GPIO_PIN_7
-#define Spirit1_GPIO3_GPIO_Port GPIOC
-#define Debug0_Pin GPIO_PIN_8
-#define Debug0_GPIO_Port GPIOC
-#define Debug1_Pin GPIO_PIN_9
-#define Debug1_GPIO_Port GPIOC
-#define Debug2_Pin GPIO_PIN_11
-#define Debug2_GPIO_Port GPIOA
-#define Debug3_Pin GPIO_PIN_12
-#define Debug3_GPIO_Port GPIOA
-#define Key_Line_Out0_Pin GPIO_PIN_10
-#define Key_Line_Out0_GPIO_Port GPIOC
-#define Key_Line_In0_Pin GPIO_PIN_11
-#define Key_Line_In0_GPIO_Port GPIOC
-#define Key_Line_Out1_Pin GPIO_PIN_12
-#define Key_Line_Out1_GPIO_Port GPIOC
-#define Key_Line_In1_Pin GPIO_PIN_2
-#define Key_Line_In1_GPIO_Port GPIOD
-#define Spirit1_LED_Pin GPIO_PIN_4
-#define Spirit1_LED_GPIO_Port GPIOB
-#define Spirit1_CSN_Pin GPIO_PIN_6
-#define Spirit1_CSN_GPIO_Port GPIOB
-#define STA350BW_SCL_Pin GPIO_PIN_8
-#define STA350BW_SCL_GPIO_Port GPIOB
-#define STA350BW_SDA_Pin GPIO_PIN_9
-#define STA350BW_SDA_GPIO_Port GPIOB
+#define Spirit1_GPIO0_Pin              GPIO_PIN_1
+#define Spirit1_GPIO0_GPIO_Port        GPIOC
+#define STA350BW_PWRDN_Pin             GPIO_PIN_0
+#define STA350BW_PWRDN_GPIO_Port       GPIOA
+#define Spirit1_GPIO2_Pin              GPIO_PIN_4
+#define Spirit1_GPIO2_GPIO_Port        GPIOA
+#define Spirit1_GPIO1_Pin              GPIO_PIN_0
+#define Spirit1_GPIO1_GPIO_Port        GPIOB
+#define STA350BW_LRCKI_Pin             GPIO_PIN_12
+#define STA350BW_LRCKI_GPIO_Port       GPIOB
+#define STA350BW_BICKI_Pin             GPIO_PIN_13
+#define STA350BW_BICKI_GPIO_Port       GPIOB
+#define STA350BW_SDI1_Pin              GPIO_PIN_15
+#define STA350BW_SDI1_GPIO_Port        GPIOB
+#define STA350BW_MCLK_Pin              GPIO_PIN_6
+#define STA350BW_MCLK_GPIO_Port        GPIOC
+#define Spirit1_GPIO3_Pin              GPIO_PIN_7
+#define Spirit1_GPIO3_GPIO_Port        GPIOC
+#define Debug0_Pin                     GPIO_PIN_8
+#define Debug0_GPIO_Port               GPIOC
+#define Debug1_Pin                     GPIO_PIN_9
+#define Debug1_GPIO_Port               GPIOC
+#define Debug2_Pin                     GPIO_PIN_11
+#define Debug2_GPIO_Port               GPIOA
+#define Debug3_Pin                     GPIO_PIN_12
+#define Debug3_GPIO_Port               GPIOA
+#define Key_Line_Out0_Pin              GPIO_PIN_10
+#define Key_Line_Out0_GPIO_Port        GPIOC
+#define Key_Line_In0_Pin               GPIO_PIN_11
+#define Key_Line_In0_GPIO_Port         GPIOC
+#define Key_Line_Out1_Pin              GPIO_PIN_12
+#define Key_Line_Out1_GPIO_Port        GPIOC
+#define Key_Line_In1_Pin               GPIO_PIN_2
+#define Key_Line_In1_GPIO_Port         GPIOD
+#define Spirit1_LED_Pin                GPIO_PIN_4
+#define Spirit1_LED_GPIO_Port          GPIOB
+#define Spirit1_CSN_Pin                GPIO_PIN_6
+#define Spirit1_CSN_GPIO_Port          GPIOB
+#define STA350BW_SCL_Pin               GPIO_PIN_8
+#define STA350BW_SCL_GPIO_Port         GPIOB
+#define STA350BW_SDA_Pin               GPIO_PIN_9
+#define STA350BW_SDA_GPIO_Port         GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
 /**
   * @}
-  */ 
+  */
 
 /**
   * @}
-*/ 
+*/
 
 #endif /* __MAIN_H */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

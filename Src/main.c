@@ -214,14 +214,6 @@ int main(void)
   //enable all IRQ.
   __enable_irq();
 
-  /* STA350BW Init */
-  STA350BW_Init(&STA350BW_I2C_Drv,
-                0x11,
-                STA350BW_Fs_48000,
-                NULL
-               );
-
-
   //Enable Timers.
   HAL_TIM_Base_Start_IT(&htim7);
   HAL_TIM_Base_Start_IT(&htim8);
@@ -233,12 +225,12 @@ int main(void)
                                    Audio_Buffer_Sample_Point
                                   );
   */
-  ///**
+
   HAL_DFSDM_FilterRegularStart_DMA(&hdfsdm1_filter1,
                                    &(Audio.Encode.Source_Buffer[0]),
                                    Audio_Buffer_Sample_Point
                                   );
-  //**/
+
 
   //USART1 Rx DMA Transmit Start.
   HAL_UART_Receive_DMA(&huart1,
@@ -249,6 +241,13 @@ int main(void)
   //I2S Transmit Start.
   HAL_SAI_Transmit_DMA(&hsai_BlockA2, (uint8_t*)Audio.Decode.Out_Buffer, Audio_Buffer_Out_Point);
 
+  /* STA350BW Init */
+  STA350BW_Init(&STA350BW_I2C_Drv,
+                0x11,
+                STA350BW_Fs_48000,
+                NULL
+               );
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -256,16 +255,17 @@ int main(void)
   while (1)
   {
     /*Matrix Keyboard.*/
-    ////matrix_key_scan(&matrix_key_data);
+    matrix_key_scan(&matrix_key_data);
+
 #if Audio_Direct == 0
 
     /* If Key Record Press Down.
     */
     //if(Audio_KEY_Get() == GPIO_PIN_RESET)
-    if(0)
+    if(1)
     {
       //Pause Speaker DMA.
-      HAL_SAI_DMAPause(&hsai_BlockA2);
+      ////HAL_SAI_DMAPause(&hsai_BlockA2);
 
       //Filter1 complete interrupt.
       if(Flag_DFSDM_Int[3])
@@ -273,7 +273,41 @@ int main(void)
         Flag_DFSDM_Int[3] = 0;
 
         //Encode Audio and Send out.
-        Audio_Encode_Send(&Audio);
+        ////Audio_Encode_Send(&Audio);
+
+#if 1
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
+
+        //Encode.
+        Audio.Encode.Encode_Out_Len = opus_encode(Enc,
+                                                  (opus_int16*)Audio_Sin_Data,
+                                                  Audio_Buffer_Sample_Point,
+                                                  (unsigned char*)&Audio.Encode.Encode_Out_Buffer[0],
+                                                  Audio_Buffer_Max
+                                                 );
+        //Decode.
+        Audio.Decode.Decode_Len = opus_decode(Dec,
+                                              (const unsigned char*)&Audio.Encode.Encode_Out_Buffer[0],
+                                              Audio.Encode.Encode_Out_Len,
+                                              (opus_int16*)&Audio.Decode.Decode_Buffer[0],
+                                              Audio_Buffer_Sample_Point,
+                                              0
+                                             );
+
+        /* Copy into 2 Channel I2S Buffer */
+        if(Audio.Decode.Decode_Len == Audio_Buffer_Sample_Point)
+        {
+          uint8_t Temp_Copy;
+
+          for(Temp_Copy = 0; Temp_Copy < Audio_Buffer_Sample_Point; Temp_Copy ++)
+          {
+            Audio.Decode.Out_Buffer[Temp_Copy * 2]     = Audio.Decode.Decode_Buffer[Temp_Copy];
+            Audio.Decode.Out_Buffer[Temp_Copy * 2 + 1] = Audio.Decode.Decode_Buffer[Temp_Copy];
+          }
+        }
+
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_RESET);
+#endif
       }
     }
 
@@ -291,7 +325,7 @@ int main(void)
 #endif
 
       //Receive and Decode.
-      Audio_Receive_Decode(&Audio);
+      ////Audio_Receive_Decode(&Audio);
 
       //Resume Speaker DMA.
       //HAL_SAI_DMAResume(&hsai_BlockA2);
@@ -302,7 +336,7 @@ int main(void)
    #################################################
 */
 #else
-    Audio_Direct_Loop(&Audio);
+    ////Audio_Direct_Loop(&Audio);
 
 #endif  //end of #if Audio_Direct
 

@@ -69,6 +69,7 @@ void DMA2_Channel3_IRQHandler(void);
 void DMA2_Channel4_IRQHandler(void);
 void DMA2_Channel6_IRQHandler(void);
 void DMA2_Channel7_IRQHandler(void);
+void SAI2_IRQHandler(void);
 
 #ifdef __cplusplus
 }

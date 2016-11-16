@@ -29,8 +29,8 @@ All rights reserved,if the code is not authorized by STMicroelectronics.
 
 #define SaturaLH(N, L, H)               (((N)<(L))?(L):(((N)>(H))?(H):(N)))
 
-#define Audio_Main_Loop                 0
-#define Audio_Direct                    1
+#define Audio_Main_Loop                 1
+#define Audio_Direct                    0
 #define Audio_Sin_Teat                  1
 
 /* Audio Wireless Define.
@@ -81,6 +81,7 @@ typedef struct
 */
 extern Audio_EnDecode_TypeDef Audio;
 extern const int16_t Fragment1[];
+extern int16_t Audio_Sin_Data[240];
 
 void Audio_Init(Audio_EnDecode_TypeDef* Temp);
 void Audio_Encode_Send(Audio_EnDecode_TypeDef* Temp);

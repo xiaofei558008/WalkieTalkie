@@ -43,6 +43,7 @@
 extern DMA_HandleTypeDef hdma_dfsdm1_flt0;
 extern DMA_HandleTypeDef hdma_dfsdm1_flt1;
 extern DMA_HandleTypeDef hdma_sai2_a;
+extern SAI_HandleTypeDef hsai_BlockA2;
 extern DMA_HandleTypeDef hdma_spi1_rx;
 extern DMA_HandleTypeDef hdma_spi1_tx;
 extern TIM_HandleTypeDef htim2;
@@ -406,6 +407,20 @@ void DMA2_Channel7_IRQHandler(void)
   /* USER CODE BEGIN DMA2_Channel7_IRQn 1 */
 
   /* USER CODE END DMA2_Channel7_IRQn 1 */
+}
+
+/**
+* @brief This function handles SAI2 global interrupt.
+*/
+void SAI2_IRQHandler(void)
+{
+  /* USER CODE BEGIN SAI2_IRQn 0 */
+
+  /* USER CODE END SAI2_IRQn 0 */
+  HAL_SAI_IRQHandler(&hsai_BlockA2);
+  /* USER CODE BEGIN SAI2_IRQn 1 */
+
+  /* USER CODE END SAI2_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
